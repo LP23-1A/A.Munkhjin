@@ -5,6 +5,19 @@ let container = document.createElement("div");
 container.classList.add("container");
 body.appendChild(container);
 
+
+function modal() {
+  let header =document.createElement('div');
+  let title = document.createElement('div');
+  let inpuT = document.createElement('input');
+  let description = document.createElement('div');
+  let status = document.createElement('div');
+  let modalbtn = document.createElement('button');
+  description.style.backgroundColor=('yellow')
+  
+  
+}
+
 function createcards(progress) {
   let card = document.createElement("div");
   let addbtn = document.createElement("button");
@@ -16,17 +29,14 @@ function createcards(progress) {
   card.appendChild(plusdiv)
   plusdiv.innerText = ('html')
 
-  //   card.appendChild(addbtn);
-
+  card.appendChild.(Xpdescription)
   card.innerHTML = `
   <div>${progress}</div>
   <button>Add card</button>
   `;
-
-  //   way 1 innerHtml
-  //  way 2 div add child div
-
-  //   addbtn.innerText = "add card";
+  // console.log(modal);
+  // card.appendChild(modal);
+addbtn.addEventListener('click', () => (modal))
 }
 
 function drawcards(array) {

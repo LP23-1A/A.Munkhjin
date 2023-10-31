@@ -16,12 +16,22 @@ let modalcard = document.createElement("div");
   let prioritybtn = document.createElement("button");
 
   modalcard.classList.add("modalcard");
+  header.classList.add('header');
+  title.classList.add('title')
+  titleInput.classList.add('titleinput')
+  description.classList.add('description')
+  desInput.classList.add('desInput')
+  status.classList.add('status')
+  statusbtn.classList.add('statusbtn')
+  priority.classList.add('priorrity')
+  prioritybtn.classList.add('prioritybtn')
+
+
   header.innerText = "Addcard";
   title.innerText = "Title";
   description.innerText = "Description";
   status.innerText = "Status";
   priority.innerText = "Priority";
-  desInput.style.height = "200px";
 
   container.appendChild(modalcard);
   modalcard.appendChild(header);
@@ -35,13 +45,19 @@ let modalcard = document.createElement("div");
   modalcard.appendChild(prioritybtn);
 
 
-function modal(progress) {
+function modal() {
   
   prioritybtn.innerText = "Add task";
 
   let taskInput = [];
 
-  let obj = { title: "" };
+  let obj = { 
+    title: "To do",
+    description: "this is todo card",
+    priority: "high"
+
+
+};
 
   function titleChangeEvent(event) {
     obj.title = event.target.value;
@@ -56,7 +72,6 @@ function modal(progress) {
   });
 
   function submitHandler() {
-    console.log({ taskInput });
     taskInput.push(obj);
   }
 
@@ -75,8 +90,11 @@ function createcards(progress) {
 
   //modal
   card.classList.add("card");
-  addbtn.classList.add("button");
+  addbtn.classList.add("addbtn");
   plusdiv.classList.add("plusdiv");
+  heads.classList.add('heads');
+  cardtitle.classList.add('cardtitle');
+  carddesc.classList.add('carddesc');
 
   card.appendChild(heads);
   card.appendChild(plusdiv);
@@ -86,12 +104,13 @@ function createcards(progress) {
   // console.log(card);
   container.appendChild(card);
   heads.innerText = progress;
+  addbtn.innerText = '+ Add card'
 
   addbtn.onclick = () => {
     let modalopen = document.getElementsByClassName("modalcard");
     modalopen[0].style.display = "flex";
   };
-  plusdiv.innerText = "html";
+  plusdiv.innerText = 'todo';
 }
 
 function drawcards(array) {
