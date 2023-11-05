@@ -17,7 +17,7 @@ let progress = [
     return `<div>
     <h1>${title}</h1>
      <div class="card"></div>
-    <button class='addcard'>+addcard</button> 
+    <button id ="addcard">+addcard</button> 
     </div>`;
   }
   
@@ -33,18 +33,19 @@ let progress = [
   let body = document.querySelector("body");
   let container = document.querySelector(".container");
   let cards = document.querySelector(".cards");
-  let openModal = document.querySelector('.openmodal');
-  let addCardOpen = document.querySelector(".addcard");
-  
+  let openModal = document.querySelector('.openContainer');
+  let addCardOpen = document.getElementById("addcardsnu");
+  let inputTitle = document.getElementById('InpTitle')
+
   console.log(addCardOpen);
   function openmodal() {
     return `
     <div class="openmodal">
     <h2>Add task</h2>
     <h3>Title</h3>
-    <input type="">
+    <input type="" id = "InpTitle">
     <h3>description</h3>
-    <input type="">
+    <input type="" id="InpDesc">
     <h3>status</h3>
     <select id="status">
   <option value="todo">todo</option>
@@ -57,7 +58,7 @@ let progress = [
      <option value="high">high</option>
      <option value="low">low</option>
         </select>
-        <button></button>
+        <button id ='closeBtn'>Addcard</button>
     </div>`
    
   }  
@@ -104,3 +105,4 @@ let progress = [
     }
   });
   openModal.innerHTML += openmodal()
+  addCardOpen.addEventListener("click", () => (openModal.style.display ='flex'))
