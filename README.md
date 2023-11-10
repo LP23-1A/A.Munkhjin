@@ -1,2 +1,2 @@
 # A.Munkhjin
-asdasdsadaidajdasiajfiojiaa
+bi gomo
