@@ -1,2 +1,2 @@
 # A.Munkhjin
-b gomo
+bi gomo
