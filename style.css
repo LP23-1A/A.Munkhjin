@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: hotp;
+}
+body {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-size: cover;
+  
+  background-repeat: no-repeat;
+  width: 100%;
+  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c271c019-3bd3-489f-bff7-2f51f1b565fa/dcfq8v5-ea68ab02-1a9f-459c-9e3a-33f4d7a711f8.png/v1/fill/w_1024,h_722/pink_panther_minimalist_background_by_minimalistbia_dcfq8v5-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIyIiwicGF0aCI6IlwvZlwvYzI3MWMwMTktM2JkMy00ODlmLWJmZjctMmY1MWYxYjU2NWZhXC9kY2ZxOHY1LWVhNjhhYjAyLTFhOWYtNDU5Yy05ZTNhLTMzZjRkN2E3MTFmOC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.N4_XPd1dBwWe9aiz5kp0m6eBAhTlEdWhXEKf9eObFoE);
+}
+.left20px {
+  margin-left: 20px;
+  color: white;
+  font-size: 30px;
+}
+.flex {
+  display: flex;
+}
+.directionColumn {
+  flex-direction: column;
+}
+.ctr-row {
+  justify-content: center;
+}
+.ctr-clm {
+  align-items: center;
+}
+.container {
+  justify-content: center;
+  margin-top: 70px;
+  gap: 20px;
+}
+.cardElement {
+  width: 100%;
+  gap: 40px;
+  justify-content: center;
+  color: white;
+}
+.cards {
+  gap: 100px;
+
+  border-radius: 20px;
+  height: fit-content;
+}
+.card {
+  width: 270px;
+  gap: 10px;
+  padding: 10px;
+}
+.doneBtn {
+  height: 40px;
+  border: none;
+  background-color: hotpink;
+  color: white;
+}
+.gg-Pen {
+  height: 40px;
+  border: none;
+  background-color: hotpink;
+  color: white;
+}
+.closeX {
+  height: 40px;
+  border: none;
+  background-color: hotpink;
+  color: white;
+}
+
+.modal {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  background-color: hotpink;
+}
+.bgcolor {
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ69zYLFg1nTnEl-ILVHVWOjTKxKIZljb7Li-wDaEiSJjpT36zKuo6nVzZBXRe78agBRx4&usqp=CAU);
+  border-radius: 5px;
+  width: 300px;
+  background-size: cover;
+}
+.addcard {
+  border: none;
+  background: none;
+  font-size: 20px;
+  border-radius: 20px;
+  color: white;
+}
+#title {
+  width: 100%;
+}
+#desc {
+  width: 100%;
+  height: 150px;
+}
+#closeBtn {
+  margin-top: 10px;
+  height: 30px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+#priority {
+  width: 100%;
+}
+#status {
+  width: 100%;
+}
