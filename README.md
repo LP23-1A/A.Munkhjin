@@ -1,2 +1,1 @@
 # A.Munkhjin
-bi gomo
