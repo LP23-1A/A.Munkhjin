@@ -36,8 +36,8 @@ let body = document.querySelector("body");
 let openModal = document.querySelector(".modal");
 let addCardOpen = document.querySelectorAll(".addcard");
 let closeBtn = document.getElementById("closeBtn");
-
-let card = document.querySelectorAll(".card");
+let board = document.querySelectorAll('.bgcolor')
+const card = document.querySelectorAll(".card");
 let cardElement = document.querySelector("cardElement");
 let todoCount = document.getElementById("todoCount");
 let inprogressCount = document.getElementById("inprogressCount");
@@ -147,6 +147,35 @@ function render(array) {
     element.onclick = () => remove(element);
   });
 }
+let draggedItem = null;
+card.forEach((card ) => {
+  board.addEventListener('dragstart', (event) =>{
+    event.target.value
+    draggedItem = event.target;
+    event.dataTransfer.setData('text', event.target.getAttibute(id));
+  })
+  card.addEventListener('dragend', () => {
+    draggedItem = null;
+  });
+});
+board.forEach((boards) => {
+  boards.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+  boards.addEventListener('dragenter', (event) =>{
+    event.preventDefault();
+    if (draggedItem) {
+      const dragging = draggedItem.parentNode;
+      if (dragging !== event.currentTarget){
+        event.currentTarget.appendchild(draggedItem);
+      }
+    }
+  });
+  boards.addEventListener('dragleave', () => {});
+  boards.addEventListener('drop', (event) =>{
+    event.preventDefault()
+  });
+});
 
 function edit(element, action) {
   openModalTrigger();
