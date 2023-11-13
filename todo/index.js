@@ -16,7 +16,7 @@ let data = [
 function listItem(props) {
   let { title, desc, id } = props;
   return `
-  <div class="cardElement flex" id="${id}">
+  <div draggable="true"   class="cardElement flex" id="${id}">
     <button class="doneBtn"><i class="gg-check-o"></i></button>
     <div class="detail flex directionColumn " >
     <h3>${title}</h3>
@@ -36,7 +36,7 @@ let body = document.querySelector("body");
 let openModal = document.querySelector(".modal");
 let addCardOpen = document.querySelectorAll(".addcard");
 let closeBtn = document.getElementById("closeBtn");
-let board = document.querySelectorAll('.bgcolor')
+const boards = document.querySelectorAll('.board')
 const card = document.querySelectorAll(".card");
 let cardElement = document.querySelector("cardElement");
 let todoCount = document.getElementById("todoCount");
@@ -70,7 +70,6 @@ for (const card of addCardOpen) {
 }
 
 function addTask(element, action) {
-  console.log(action);
   if (action === "edit") {
     const id = element.parentElement.id;
 
@@ -146,41 +145,49 @@ function render(array) {
   closeX.forEach((element) => {
     element.onclick = () => remove(element);
   });
+  function edit(element, action) {
+    openModalTrigger();
+    closeBtn.onclick = () => addTask(element, action);
+  }
 }
 let draggedItem = null;
-card.forEach((card ) => {
-  board.addEventListener('dragstart', (event) =>{
-    event.target.value
-    draggedItem = event.target;
-    event.dataTransfer.setData('text', event.target.getAttibute(id));
-  })
-  card.addEventListener('dragend', () => {
-    draggedItem = null;
-  });
-});
-board.forEach((boards) => {
-  boards.addEventListener('dragover', (event) => {
-    event.preventDefault();
-  });
-  boards.addEventListener('dragenter', (event) =>{
-    event.preventDefault();
-    if (draggedItem) {
-      const dragging = draggedItem.parentNode;
-      if (dragging !== event.currentTarget){
-        event.currentTarget.appendchild(draggedItem);
-      }
+ card.forEach((card) => {
+ card.addEventListener('dragstart', (event) => {
+ event.target.id
+ draggedItem = event.target;
+ event.dataTransfer.setData( 'text', event.target.getAttribute(id));
+ });
+ card.addEventListener('dragend', () => {
+ draggedItem = null;
+ });
+ });
+ boards.forEach((board) => {
+ board.addEventListener('dragover', (event) => {
+ event.preventDefault();
+ });
+ board.addEventListener('dragenter', (event) => {
+ event.preventDefault();
+ if (draggedItem) {
+ const draggingBoard = draggedItem;
+ if (draggingBoard !== event.currentTarget) {
+ event.currentTarget.appendChild( draggedItem);
+ setData(
+  data.map((item) => {
+    if (item.id === id) {
+      item.status = status;
     }
-  });
-  boards.addEventListener('dragleave', () => {});
-  boards.addEventListener('drop', (event) =>{
-    event.preventDefault()
-  });
-});
+    return item;
+  })
+);
+ }
+ }
+ });
+ board.addEventListener('dragleave', () => { });
+ board.addEventListener('drop', (event) => {
+ event.preventDefault();
 
-function edit(element, action) {
-  openModalTrigger();
-  closeBtn.onclick = () => addTask(element, action);
-}
+ });
+ });
 
 render(data);
 
@@ -190,3 +197,4 @@ function openModalTrigger() {
 function closeModalTrigger() {
   openModal.style.display = "none";
 }
+
