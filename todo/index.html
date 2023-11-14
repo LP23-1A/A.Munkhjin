@@ -11,69 +11,88 @@
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/pen.css' rel='stylesheet'>
 </head>
 <body>
-
-        <h1 style="color: white; justify-content: center; position: absolute; " class="flex ">Pink panther To do </h1>
-        <div class="container flex">
-            <div class="cards flex">
-                <div id="todo" class="board">
-                    <div class="flex ctr-clm ctr-row" >
-                        <h1>todo</h1>
-                        <div class="left20px" id="todoCount"></div>
-                    </div>
-                    <div  class="card flex directionColumn"></div>
-                    <button class="addcard">+Addcard</button>
+<div class="mainBox"> 
+    <h1 style="color:black; justify-content: center; position: absolute; " class="flex ">To do List  </h1>
+    <div class="container flex">
+        <div class="cards flex">
+            <div id="todo" class="board">
+                <div class="flex ctr-clm ctr-row" >
+                    <h1>todo</h1>
+                    <div class="left20px" id="todoCount"></div>
                 </div>
-                <div id="inprogress" class="board">
-                    <div class="flex ctr-clm ctr-row">
-                        <h1>in progress</h1>
-                        <div class="left20px" id="inprogressCount"></div>
-                    </div>
-                    <div  class="card flex directionColumn"></div>
-                    <button class="addcard">+Addcard</button>
-                </div>
-                <div id="stuck" class="board">
-                    <div class="flex ctr-clm ctr-row">
-                        <h1>stuck</h1>
-                        <div class="left20px" id="stuckCount"></div>
-                    </div>
-                  
-                    <div  class="card flex directionColumn">
-                    </div>
-                    <button class="addcard">+Addcard</button>
-                </div>
-                <div id="done" class="board">
-                    <div class="flex ctr-clm  ctr-row">
-                        <h1>done</h1>
-                        <div class="left20px" id="doneCount"></div>
-                    </div>
-                    
-                    <div   class="card   flex directionColumn"></div>
-                    <button class="addcard">+Addcard</button>
-                </div>
+                <div  class="card flex directionColumn"></div>
+                <button class="addcard">+Addcard</button>
             </div>
-            <div class="modal">
-                <div >
-                    <h2>Add task</h2>
-                    <h3>Title</h3>
-                    <input type="" id = "title">
-                    <h3>description</h3>
-                    <input type="" id="desc">
-                    <h3>status</h3>
-                    <select id="status">
-                  <option value="todo">todo</option>
-                  <option value="inprogress">inprogress</option>
-                  <option value="stuck">stuck</option>
-                  <option value="done">done</option>
-                     </select>
-                     <p>priority</p>
-                     <select id="priority">
-                     <option value="high">high</option>
-                     <option value="low">low</option>
-                        </select>
-                    <button id ='closeBtn'>Addcard</button>
+            <div id="inprogress" class="board">
+                <div class="flex ctr-clm ctr-row">
+                    <h1>in progress</h1>
+                    <div class="left20px" id="inprogressCount"></div>
                 </div>
+                <div  class="card flex directionColumn"></div>
+                <button class="addcard">+Addcard</button>
+            </div>
+            <div id="stuck" class="board">
+                <div class="flex ctr-clm ctr-row">
+                    <h1>stuck</h1>
+                    <div class="left20px" id="stuckCount"></div>
+                </div>
+              
+                <div  class="card flex directionColumn">
+                </div>
+                <button class="addcard">+Addcard</button>
+            </div>
+            <div id="done" class="board">
+                <div class="flex ctr-clm  ctr-row">
+                    <h1>done</h1>
+                    <div class="left20px" id="doneCount"></div>
+                </div>
+                
+                <div   class="card   flex directionColumn"></div>
+                <button class="addcard">+Addcard</button>
             </div>
         </div>
+        <div class="modal">
+            <div >
+                <h2>Add task</h2>
+                <h3>Title</h3>
+                <input type="" id = "title">
+                <h3>description</h3>
+                <input type="" id="desc">
+                <h3>status</h3>
+                <select id="status">
+              <option value="todo">todo</option>
+              <option value="inprogress">inprogress</option>
+              <option value="stuck">stuck</option>
+              <option value="done">done</option>
+                 </select>
+                 <p>priority</p>
+                 <select id="priority">
+                 <option value="high">high</option>
+                 <option value="low">low</option>
+                    </select>
+                <button id ='closeBtn'>Addcard</button>
+            </div>
+        </div>
+        <div id="Sun" class="flex">
+            <div class="sun">
+            </div>
+            <div class="sun">
+            </div>
+            <svg>
+                <filter id="wave">
+                    <feTurbulence x="0" y="0" baseFrequency="0.009"
+                        numOctaves="5" seed="2">
+                    <animate attributeName = "baseFrequency" dur="60s" values="0.02;0.005;0.02" repeatCount="indefinite"></feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" scale="30">
+                </filter>
+            </svg>
+        </div>
+        
+        
+    </div>
+
+</div>
+       
 
     <script src="./index.js"></script>
 </body>
