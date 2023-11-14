@@ -10,17 +10,17 @@ let data = [
     status: "inprogress",
     id: yid(),
   },
-  { id: yid(), done: "done", title: "Todo", desc: "naki bn", status: "todo" },
+  { id: yid(), done: "done", title: "Todo", desc: "naki bn hds", status: "todo" },
 ];
 
 function listItem(props) {
   let { title, desc, id } = props;
   return `
-  <div draggable="true"   class="cardElement flex" id="${id}">
+  <div draggable="true"   class="cardElement flex " id="${id}">
     <button class="doneBtn"><i class="gg-check-o"></i></button>
     <div class="detail flex directionColumn " >
-    <h3>${title}</h3>
-    <p>${desc}</p>
+    <h3 class="flex wrap">${title}</h3>
+    <p class="flex wrap" >${desc}</p>
     </div>
     <button class="closeX">
     <i class="gg-close"></i>

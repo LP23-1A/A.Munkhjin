@@ -33,8 +33,17 @@ height: 100vh;
 .ctr-row {
   justify-content: center;
 }
+.wrap{
+  flex-wrap: nowrap;
+}
 .ctr-clm {
   align-items: center;
+}
+h3{
+  width: 100px;
+}
+p{
+  width: 50px;
 }
 .container {
   justify-content: center;
@@ -44,38 +53,42 @@ height: 100vh;
 }
 .cardElement {
   width: 100%;
-  gap: 40px;
+  gap: 30px;
   justify-content: center;
-  color: black;
+  color: white;
+  background: fixed;
+  border: 1px solid black;
 }
 .cards {
   gap: 100px;
   border-radius: 20px;
   height: fit-content;
   z-index: 3;
+  color: white
 }
 .card {
-  width: 100%;
   gap: 10px;
   padding: 10px;
+  color: white;
 }
 .doneBtn {
   height: 40px;
   border: none;
-  color: black;
+  color: white;
   background: fixed;
+  
 }
 .gg-Pen {
   height: 40px;
   border: none;
 background: none;
-color: black;
+color: white;
 
 }
 .closeX {
   height: 40px;
   border: none;
-  color: black;
+  color: white;
   background: none;
 }
 
@@ -94,18 +107,32 @@ color: black;
   z-index: 3;
 }
 .board {
-  background-color: rgb(114, 215, 154);
+  background-color: rgb(12, 117, 237);
   border-radius: 5px;
-  width: 300px;
+  width: 400px;
   background-size: cover;
   border: solid black 1px;
 }
 .addcard {
   border: none;
-  background: none;
+  background-color: rgb(12, 117, 237);
+
   font-size: 20px;
   border-radius: 20px;
   color: white;
+  margin-left: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.addcard :hover{
+  opacity: 0.5;
+  cursor: pointer;
+   background-color: red;
+}
+button :hover{
+opacity: 0.7;
+cursor: pointer;
+
 }
 #title {
   width: 100%;
@@ -169,7 +196,7 @@ inset:  0 0 50px #fff;
 -webkit-box-reflect: below 10px lineear-gradient(transparent,transparent,#0002);
 animation: animate 5s linear infinite;
 }
-.sun :nth-last-child(2){
+.sun:nth-child(2){
   animation-delay: -2.5s;
 }
 @keyframes animate 
