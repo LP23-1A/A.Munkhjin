@@ -10,7 +10,7 @@ let data = [
     status: "inprogress",
     id: yid(),
   },
-  { id: yid(), done: "done", title: "Todo", desc: "naki bn hds", status: "todo" },
+  { id: yid(), done: "done", title: "Todo", desc: "listen lesson", status: "todo" },
 ];
 
 function listItem(props) {
@@ -19,8 +19,8 @@ function listItem(props) {
   <div draggable="true"   class="cardElement flex " id="${id}">
     <button class="doneBtn"><i class="gg-check-o"></i></button>
     <div class="detail flex directionColumn " >
-    <h3 class="flex wrap">${title}</h3>
-    <p class="flex wrap" >${desc}</p>
+    <div class="flex detail wordwrap wrap"><h3 >${title}</h3></div>
+    <div class="flex detail wordwrap wrap"><p >${desc}</p></div>
     </div>
     <button class="closeX">
     <i class="gg-close"></i>
@@ -83,7 +83,6 @@ function addTask(element, action) {
         data[i].status = status;
       }
     }
-    console.log(data);
     render(data);
     closeModalTrigger();
     return;
@@ -184,6 +183,7 @@ boards.forEach((board, index) => {
       }
     });
     render(data);
+    console.log(data);
   });
 });
 
@@ -195,3 +195,4 @@ function openModalTrigger() {
 function closeModalTrigger() {
   openModal.style.display = "none";
 }
+
