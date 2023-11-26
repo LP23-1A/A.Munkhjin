@@ -30,7 +30,7 @@ const data =[{
 ]
 export default function Suggest() {
     return (
-        <div className="flex wrap gap8px">
+        <div className="flex wrap gap-3 w450px">
             {
                 data.map((e)=>
                 {

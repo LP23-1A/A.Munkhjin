@@ -14,17 +14,17 @@ function WorkDesc() {
   return (
     <>
       <div className="Workdesc" >
-        <div className="flex justifyStart width576px">
-        <h2>Fiskil</h2>
+        <div className="flex justify-items-end width576px">
+        <h2 className="text-2xl font-bold">Fiskil</h2>
 
         </div>
-        <div >
+        <div className="mt-5" >
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec
-          urna ac tellus volutpat viverra. Vestibulum ante ipsum primis in
-          faucibus orci luctus et ultrices posuere cubilia curae.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br /> Maecenas nec
+          urna ac tellus volutpat viverra. Vestibulum ante <br />ipsum primis in
+          faucibus orci luctus et ultrices posuere cubilia <br />curae.
         </p>    
-        <div>
+        <div className="mt-5">
         <Suggest/> 
         </div>   
         </div>
