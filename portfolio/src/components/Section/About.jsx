@@ -12,8 +12,8 @@ export default function SecondMain() {
 
           </div>
         </div>
-        <div className="secondLeft">
-          <h1>Curious about me? Here you have it:</h1>
+        <div className="secondLeft gap-3 flex flex-col">
+          <h1 className="text-2xl">Curious about me? Here you have it:</h1>
           <p className="fontstyle">
             I'm a passionate, self-proclaimed designer who specializes in full
             stack development (React.js & Node.js). I am very enthusiastic about

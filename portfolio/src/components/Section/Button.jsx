@@ -1,9 +1,9 @@
 export default function AboutBtn() {
     return (
         <>
-        <button className="AboutBtn">
+        <p className="AboutBtn text-center flex justify-center items-center">
             About me
-        </button>
+        </p>
         </>
     )
     

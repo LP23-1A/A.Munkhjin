@@ -4,7 +4,7 @@ export default function Navbar({ Handler, Dark}) {
 
   return (
     <>
-      <div className={`flex spaceBwn marginLftRght ctrColumn  `}>
+      <nav className={`flex spaceBwn marginLftRght ctrColumn  `}>
         <h1 className="text-4xl">{"<SS/>"}</h1>
         <div className="flex ctrColumn gap24px">
           <p>About</p>
@@ -17,7 +17,7 @@ export default function Navbar({ Handler, Dark}) {
 
           <button className="navBtn flex items-center">Download CV</button>
         </div>
-      </div>
+      </nav>
     </>
   );
 }

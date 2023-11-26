@@ -11,13 +11,14 @@ export default function Main() {
       <div className="flex ctrRow marginTop96px">
         <div className="leftMain">
           <h1 className="text-4xl">Hi, I’m Sagar 👋</h1>
-          <p>
+          <p className="mt-2 w">
             I'm a full stack developer (React.js & Node.js) with a focus on
             creating (and occasionally designing) exceptional digital
             experiences that are fast, accessible, visually appealing, and
             responsive. Even though I have been creating web applications for
             over 7 years, I still love it as if it was something new.
           </p>
+          <div className="flex gap-5 flex-col mt-10">
           <div className="flex ctrColumn">
             <LocationIcon />
             <p>Ahmedabad, India</p>
@@ -26,8 +27,9 @@ export default function Main() {
             <GreenIcon />
             <p>Available for new projects</p>
           </div>
-
-          <div className="flex">
+   
+          </div>
+          <div className="flex mt-10">
             <GitIcon />
             <Twittericon />
             <FigmaIcon />

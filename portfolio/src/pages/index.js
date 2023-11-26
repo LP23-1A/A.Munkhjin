@@ -11,7 +11,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [Dark,SetDark] = useState(true)
+  const [Dark,SetDark] = useState(false)
   const Handler = () =>{
       SetDark(!Dark)
   }
@@ -21,9 +21,9 @@ export default function Home() {
         <Navbar Handler={Handler} Dark={Dark} />
         <Main />
       </div>
-      <div className="secondPage">
-        <SecondMain />
-      </div>
+      {/* <div className={`${Dark && 'bg-white'}`}> */}
+        <SecondMain  Dark={Dark} />
+      {/* </div> */}
 
       <ThirdMain />
       <FourthMain />
