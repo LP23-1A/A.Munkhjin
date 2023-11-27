@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: auto;
   box-sizing: border-box;
   color: var(--gray-600, #4B5563);
@@ -14,10 +14,10 @@ line-height: 24px;
 }
 
 nav{
-  color: black;
+  /* color: black; */
 }
 h1{
-  color: black;
+  /* color: black; */
   font-weight: bold;
 }
 .flex {
@@ -37,7 +37,7 @@ h1{
   justify-content: space-between;
 }
 .marginLftRght {
-  margin: 0 80px;
+  margin: 20px 80px;
 }
 .directionColumn {
   flex-direction: column;
@@ -85,11 +85,11 @@ h1{
 }
 .empty {
   background-color: #e5e7eb;
-  width: 280px;
+  width: 300px;
   height: 300px;
   position: absolute;
   top: 50px;
-  left: 40px;
+  left: 20px;
   z-index: -1;
 }
 .FirstPage {
@@ -139,11 +139,6 @@ h1{
   right: 50px;
   z-index: -1;
 }
-.width{
-  width: 1980px;
-  height: 1000px;
-  background-color: green;
-}
 .relative {
   position: relative;
 }
@@ -153,6 +148,7 @@ h1{
   gap: 110px;
   text-align: center;
   font-size: 16px;
+  padding: 20px 50px;
 }
 .imgSize {
   width: 50px;
@@ -208,3 +204,4 @@ h1{
   flex: 1 0 0;
   align-self: stretch;
 }
+

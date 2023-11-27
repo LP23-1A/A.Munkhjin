@@ -5,13 +5,16 @@ import FigmaIcon from "../ICons/FigmaIcon";
 import Profile from "./../../../public/Pic.png";
 import GreenIcon from "../ICons/GreenIcon";
 export default function Main() {
-  console.log(Profile);
+  
   return (
+    
     <>
-      <div className="flex ctrRow marginTop96px">
+   
+      <div className="flex  marginTop96px  flex-col-reverse md:flex-row items-center justify-center ">
+      
         <div className="leftMain">
-          <h1 className="text-4xl">Hi, I’m Sagar 👋</h1>
-          <p className="mt-2 w">
+          <h1 className="text-4xl md: mt-10">Hi, I’m Sagar 👋</h1>
+          <p className="mt-2 ">
             I'm a full stack developer (React.js & Node.js) with a focus on
             creating (and occasionally designing) exceptional digital
             experiences that are fast, accessible, visually appealing, and
@@ -35,12 +38,12 @@ export default function Main() {
             <FigmaIcon />
           </div>
         </div>
-        <div className="rightMain">
+        <div className="rightMain w-full">
           <img
             style={{ maxWidth: `${Profile.width}px` }}
             src={Profile.src}
           />
-          <div className="empty"></div>
+          <div className="empty md: left-[-10px]"></div>
         </div>
       </div>
     </>

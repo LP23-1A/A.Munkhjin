@@ -16,17 +16,19 @@ export default function Home() {
       SetDark(!Dark)
   }
   return (
-    <div className={`${Dark && "bg-black text-white"}`}>
+    <div className={`${Dark && " text-white bg-black"}`}>
       <div className="FirstPage " >
         <Navbar Handler={Handler} Dark={Dark} />
         <Main />
       </div>
-      {/* <div className={`${Dark && 'bg-white'}`}> */}
-        <SecondMain  Dark={Dark} />
-      {/* </div> */}
+      <div className={`${Dark && 'bg-black'}`}>
+        <SecondMain  />
+      </div>
 
       <ThirdMain />
-      <FourthMain />
+      <div className={`${Dark && 'bg-black text-black'}`}>
+      <FourthMain   />
+      </div>
       <Work />
       <Getintouch />
     </div>
