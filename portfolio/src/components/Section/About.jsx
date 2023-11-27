@@ -5,9 +5,9 @@ export default function SecondMain() {
     <div className="secondMain ">
         <div className="flex ctrRow" >     <AboutBtn /></div>
  
-      <div className="flex ctrRow marginTop48px   ">
+      <div className=" flex ctrRow marginTop48px sm:flex-wrap  md:flex-wrap   ">
         <div className="seconRight relative">
-          <img src={Photo.src} />
+          <img  style={{ maxWidth: `${Photo.width}px` }} src={Photo.src} />
           <div className="emptyBig">
 
           </div>
