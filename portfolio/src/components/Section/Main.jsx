@@ -38,8 +38,8 @@ export default function Main() {
             <FigmaIcon />
           </div>
         </div>
-        <div className="rightMain w-full">
-          <img
+        <div className="rightMain w-full ml-11">
+          <img 
             style={{ maxWidth: `${Profile.width}px` }}
             src={Profile.src}
           />

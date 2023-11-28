@@ -29,15 +29,15 @@ const data = [
 ];
 export default function DrawFourth() {
   return (
-    <div className="flex directionColumn gap24px experienceContainer ctrRow ">
+    <div className="flex gap-[30px] w-[279px] lg:flex directionColumn lg:gap-[24px] experienceContainer ctrRow lg:w-[1280px]  ">
       {data.map((e) => {
-        return ( <div className="flex spaceBwn upholdbackground ">
+        return ( <div className="  lg:flex spaceBwn upholdbackground ">
           <img className="fourthImg" src={e.url} />
           <div>
-            <h2>
+            <h2 className="font-bold">
             {e.title}
             </h2>
-            <ul className="flex directionColumn gap24px">
+            <ul className="flex directionColumn gap-5">
               <li>{e.title1}</li>
               <li>{e.title2}</li>
 
@@ -45,7 +45,7 @@ export default function DrawFourth() {
               <li>{e.title4}</li>
             </ul>
           </div>
-          <h2>{e.header}</h2>
+          <h2 className="font-bold">{e.header}</h2>
         </div>
             
         );

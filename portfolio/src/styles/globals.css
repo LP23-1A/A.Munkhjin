@@ -20,10 +20,10 @@ h1{
   /* color: black; */
   font-weight: bold;
 }
-.flex {
+/* .flex {
   display: flex;
   box-sizing: border-box;
-}
+} */
 .justifyStart {
   justify-content: start;
 }

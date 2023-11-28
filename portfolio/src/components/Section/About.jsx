@@ -2,17 +2,17 @@ import AboutBtn from "./Button";
 import Photo from "./../../../public/Pic1.png";
 export default function SecondMain() {
   return (
-    <div className="secondMain ">
+    <div className="secondMain  ">
         <div className="flex ctrRow" >     <AboutBtn /></div>
  
-      <div className=" flex ctrRow marginTop48px sm:flex-wrap  md:flex-wrap   ">
+      <div className=" ml-10 sm:flex ctrRow marginTop48px flex-col   md:flex-row     ">
         <div className="seconRight relative">
-          <img  style={{ maxWidth: `${Photo.width}px` }} src={Photo.src} />
-          <div className="emptyBig">
+          <img className=" ml-10 w-[280px] lg:w-[400px]" src={Photo.src} />
+          <div className="lg:emptyBig">
 
           </div>
         </div>
-        <div className="secondLeft gap-3 flex flex-col">
+        <div className=" ml-10  sm:ml-[200px]     md:secondLeft gap-3 flex justify-center  items-center flex-col lg:w-[500px] ">
           <h1 className="text-2xl">Curious about me? Here you have it:</h1>
           <p className="fontstyle">
             I'm a passionate, self-proclaimed designer who specializes in full
