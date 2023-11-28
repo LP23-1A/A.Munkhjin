@@ -10,7 +10,7 @@ export default function FourthMain() {
         <p className="textalign mt-6">
           The skills, tools and technologies I am really good at:
         </p>
-        <div className="mr-[20px]">
+        <div className="mr-[20px] ">
         <DrawFourth />
         </div>
        

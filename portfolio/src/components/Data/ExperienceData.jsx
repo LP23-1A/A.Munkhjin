@@ -29,7 +29,7 @@ const data = [
 ];
 export default function DrawFourth() {
   return (
-    <div className="flex gap-[30px] w-[279px] lg:flex directionColumn lg:gap-[24px] experienceContainer ctrRow lg:w-[1280px]  ">
+    <div className="flex gap-[30px] w-[279px] pr-[50px] lg:flex directionColumn lg:gap-[24px] experienceContainer ctrRow lg:w-[1280px]  ">
       {data.map((e) => {
         return ( <div className="  lg:flex spaceBwn upholdbackground ">
           <img className="fourthImg" src={e.url} />
