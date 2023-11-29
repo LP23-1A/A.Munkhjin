@@ -1,10 +1,20 @@
 import MobileMenu from "./MobileMenu";
 import SunIcon from "../ICons/Icon";
 import { useState } from "react";
-export default function Navbar({ Handler, Dark}) {
+import { useTheme } from "next-themes";
+export default function Navbar() {
   const [isOpen , setIsOpen] = useState(false)
+  const {theme , setTheme} = useTheme()
   const MenuButton =() =>{
     setIsOpen(!isOpen)
+  }
+  const ThemeChange = () => {
+    if (theme == 'dark') {
+      setTheme('light')
+    }
+    if (theme == 'light' ) {
+      setTheme('dark') 
+    }
   }
 
   return (
@@ -12,9 +22,9 @@ export default function Navbar({ Handler, Dark}) {
       <nav className={`flex spaceBwn ml-[30px] ctrColumn md:w-[600px]    lg:w-[1280px] md:ml-[80px] `}>
         <div>
 
-        <h1 className="text-4xl">{"<SS/>"}</h1>
+        <h1 className="text-4xl dark:text-white">{"<SS/>"}</h1>
         </div>
-        <div className=" hidden md:flex ctrColumn gap24px  ">
+        <div className=" hidden md:flex ctrColumn gap24px dark:text-white ">
           
           <p>About</p>
           <p>Work</p>
@@ -22,19 +32,20 @@ export default function Navbar({ Handler, Dark}) {
           <p>Contact</p>
        
         
-          <button onClick={Handler} className="iconBtn">
+          <button onClick={ThemeChange} className="iconBtn">
             <SunIcon />
           </button>
          
 
-          <button className="navBtn flex items-center">Download CV</button>
+          <button className="navBtn flex items-center dark:bg-white dark:text-black">Download CV</button>
         </div> 
         <button className="md:hidden w-[48px] mr-[20px]" onClick={MenuButton}>
           <img src="data:image/webp;base64,UklGRhgBAABXRUJQVlA4WAoAAAAQAAAAXwAAXwAAQUxQSGAAAAABHyAQSPFomR0RkUFRJKlRfCAWaZjBRu6t2uXJL6L/ity2bahT0vGQ0eFy0wxNztHiAm0hnT7oVwofNaHcNEOTc7S4QFtIpw/6lcJHTSg3zdDkHC0u0BbS6YN+pfBRgxtWUDggkgAAAFAIAJ0BKmAAYAA+uUqgTKcko6I6qVjgFwlnAM9srxLk3ubAstf0jtqEWWqs8emtvU4mZx7wZap3jOEgXXdi3QgYyGHHn0O4xq+IAAD+9YMABM/eF/+7cAvn0C80oAb9TkpTp/9kR0qivbgaAC7rGt3pA3CSmFBvT7yv/3bf+n3RN0qmmwML72T4G26dp6iKuWQA" alt="" />
           </button>
       </nav>
       {
-        isOpen && <MobileMenu setIsOpen={setIsOpen} />
+        isOpen && <MobileMenu onClick={ThemeChange} setIsOpen={setIsOpen} />
+       
       }
     </>
   );

@@ -2,7 +2,7 @@ import Logos from '@/components/Data/SkillsData'
 export default function ThirdMain() {
   return (
     <>
-      <div className="mt-[800px] ml-11   md:mt-[300px] ">
+      <div className=" ml-11   md:mt-[300px] ">
         <div className='flex justify-center '>
         <p className="w-90px AboutBtn textalign ">Skills</p>
 

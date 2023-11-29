@@ -5,7 +5,7 @@ export { WorkImg, WorkDesc };
 function WorkImg() {
   return (
     <>
-    <div className=" workImg"><img className="w-[279px] lg:w-[500px]" src={WorkZurag.src} /></div>
+    <div className=" workImg"><img className="w-[300px]  md:w-[300px] lg:w-[500px]" src={WorkZurag.src} /></div>
       
     </>
   );

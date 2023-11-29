@@ -11,15 +11,15 @@ export default function Work() {
         Some of the noteworthy projects I have built:
       </p>
       <div className="mt-20">
-        <div className="flex ctrRow gap24px ">
+        <div className=" flex flex-col  md:flex-row ctrRow gap24px ">
           <WorkImg />
           <WorkDesc />
         </div>
-        <div className="flex ctrRow  gap24px ">
+        <div className=" flex flex-col-reverse   md:flex-row  ctrRow  gap24px ">
           <WorkDesc />
           <WorkImg />
         </div>
-        <div className="flex  ctrRow  gap24px ">
+        <div className="flex-col flex md:flex-row   ctrRow  gap24px ">
           <WorkImg />
           <WorkDesc />
         </div>

@@ -5,32 +5,28 @@ import ThirdMain from "@/components/Section/Skills";
 import FourthMain from "@/components/Section/Experience";
 import Work from "@/components/Section/Work";
 import Getintouch from "@/components/Section/GetInTouch";
-import { useState } from "react";
+
 import { Inter } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [Dark,SetDark] = useState(false)
-  const Handler = () =>{
-      SetDark(!Dark)
-  }
+
   return (
-    <div className={`${Dark && " text-white bg-black "}`}>
-      <div className="FirstPage " >
-        <Navbar Handler={Handler} Dark={Dark} />
+<>
+<div className="w-full " >
+        <Navbar  />
         <Main />
-      </div>
-      <div className={`${Dark && 'bg-black'}`}>
+      <div >
         <SecondMain  />
       </div>
-
       <ThirdMain />
-      <div className={`${Dark && 'bg-black text-black'}`}>
+      <div >
       <FourthMain   />
       </div>
       <Work />
-      {/* <Getintouch /> */}
-    </div>
+      <Getintouch />
+      </div>
+
+</>
   );
 }
