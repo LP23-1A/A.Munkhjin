@@ -2,7 +2,7 @@ import DrawFourth from "../Data/ExperienceData";
 export default function FourthMain() {
   return (
     <>
-      <div className=" ml-14 lg:marginTop96px experience">
+      <div className="max-w-full sm:w-full md:w-full lg:mt-[200px] experience dark:bg-[#111827]">
         <div className="flex ctrRow">
           <p className="AboutBtn textalign ">Experience</p>
         </div>

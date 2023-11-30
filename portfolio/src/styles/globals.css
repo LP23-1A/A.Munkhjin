@@ -13,17 +13,7 @@ font-weight: 400;
 line-height: 24px; 
 }
 
-nav{
-  /* color: black; */
-}
-h1{
-  /* color: black; */
-  font-weight: bold;
-}
-/* .flex {
-  display: flex;
-  box-sizing: border-box;
-} */
+
 .justifyStart {
   justify-content: start;
 }
@@ -53,7 +43,6 @@ h1{
   max-width: 130px;
   height: 24px;
   border-radius: 20px;
-  padding: 6px 6px;
   gap: 24px;
 }
 .gap24px {
@@ -188,8 +177,8 @@ h1{
   flex: 1 0 0;
 }
 .workImg {
-  border-radius: 12px 0px 0px 12px;
-  border-right: 1px solid var(--gray-100, #f3f4f6);
+  border-radius: 12px 12px 12px 12px;
+  /* border-right: 1px solid var(--gray-100, #f3f4f6); */
   background: var(--gray-50, #f9fafb);
   display: flex;
   padding: 48px;

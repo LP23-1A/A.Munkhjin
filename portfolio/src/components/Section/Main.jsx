@@ -10,10 +10,10 @@ export default function Main() {
     
     <>
    
-      <div className="flex  marginTop96px  flex-col-reverse md:flex-row items-center justify-center ">
+      <div className="flex marginTop96px  flex-col-reverse md:flex-row items-center justify-center  ">
       
         <div className="leftMain">
-          <h1 className="text-4xl md: mt-10 dark:text-red-600">Hi, I’m Sagar 👋</h1>
+          <h1 className="text-4xl md: mt-10 text-black font-bold dark:text-white">Hi, I’m Sagar 👋</h1>
           <p className="mt-2 ">
             I'm a full stack developer (React.js & Node.js) with a focus on
             creating (and occasionally designing) exceptional digital
@@ -38,13 +38,15 @@ export default function Main() {
             <FigmaIcon />
           </div>
         </div>
-        <div className="rightMain w-full ml-11">
+        <div className="hidden md:flex justify-center items-center">
+        <div className="rightMain w-[200px] ml-11">
           <img className=" border"
-            style={{ maxWidth: `${Profile.width}px` }}
             src={Profile.src}
           />
-          <div className="empty md: left-[-10px]"></div>  
+          <div className="empty md: left-[-10px] dark:bg-[#374151]"></div>  
         </div>
+        </div>
+      
       </div>
     </>
   );

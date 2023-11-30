@@ -5,7 +5,7 @@ export { WorkImg, WorkDesc };
 function WorkImg() {
   return (
     <>
-    <div className=" workImg"><img className="w-[300px]  md:w-[300px] lg:w-[500px]" src={WorkZurag.src} /></div>
+    <div className=" workImg dark:bg-[#374151]"><img className="w-[300px]  md:w-[300px] lg:w-[500px]" src={WorkZurag.src} /></div>
       
     </>
   );
@@ -15,7 +15,7 @@ function WorkDesc() {
     <>
       <div className="Workdesc" >
         <div className="flex justify-items-end width576px">
-        <h2 className="text-2xl font-bold">Fiskil</h2>
+        <h2 className="text-2xl font-bold dark:text-white">Fiskil</h2>
 
         </div>
         <div className="mt-5" >

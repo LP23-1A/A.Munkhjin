@@ -65,7 +65,7 @@ const data = [
 ];
 export default function Logos() {
   return (
-    <div className="flex flex-wrap thirdSectionImg ">
+    <div className="flex flex-wrap max-sm:justify-center max-sm:items-center  thirdSectionImg max-sm:py-[64px] max-sm:px-[16px]">
       {data.map((e) => {
         return <Draw title={e.title} url={e.url} />;
       })}

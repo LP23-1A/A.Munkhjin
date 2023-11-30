@@ -36,7 +36,7 @@ export default function Suggest() {
                 {
                     return (
                         <div className="flex">
-                            <p className="suggestBg  textalign">{e.suggest}</p>
+                            <p className="suggestBg   textalign dark:bg-[#374151] dark:text-white">{e.suggest}</p>
                         </div>
                     )
                 })
