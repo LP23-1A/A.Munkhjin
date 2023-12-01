@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "ids": "^1.0.5",
     "next": "14.0.3",
     "next-themes": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

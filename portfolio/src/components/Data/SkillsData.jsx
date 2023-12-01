@@ -1,5 +1,5 @@
 import Draw from "../ICons/AboutImg";
-import expressLogo from "../ICons/Express";
+import {   uuid as id4 } from 'uuidv4';
 const data = [
   {
     url: "data:image/webp;base64,UklGRvYEAABXRUJQVlA4IOoEAADQHgCdASqwALAAPt1uslGopqUipRNpgRAbiU3cLmgZTBNag8T5ytW/wfByvv9Bfib/pn1lPMr+w3rMelj/SeoB/cuos9ADpWf3P9J3VO/KtlzGBWm3ZKagqB7XHvo8ladFFq9JXrMzMzN400ATu7u7u7u7u9Ry3nxOhp4+AWbhb48COjFHQRrk+XvJBoiY94AuMCnc6AvJXRKBtGzxsWgkJiXzXCDAWbU00Sh2Qb4m1Mr7+G+6/hf+sJeTw8bh7Y57KGWW4MAHly4MLjzQRPZcojr92hA0+RNhuAcGK0pff9hW+B9QC+eQt18kI2Lx0BehUjpOgqf5OsYNLhDcUigA/v3E/P/n5n+B/ulevtzPYxGz7iTVuJNW4kvHK2ik3AJvguasAdQbMhpmi+3+Jmgo7aXt6LS4U+g54HHt6UdbBvYpHRviB4b1s600fc32nXXzUGdEoUuHiKIWmEPtyeoBjebqatSuRDpP3NC+1umYglHx3OxJ1VlR1xuXc89huRFlkOg1ho2J9BHCCcTud9KsRn8QKwPvroN3x4QVmLQCLxOrohXLYkTMLAtzmBbuKe5y7cM1ZWYaD6V1jrJu80KiZyBoqjUbO+TpnNm1tYIEVvM1G04HGnIXfsAqNoXT2XrR5txcma3XrxHfzAIJE+Ccu8EqWPEHP30cU7Wtz1abopP+svatLWIS/yUYEtxMYVIuaTSdwZc9Dx7YOmFVgtoXJZp0N0kqZw0WLUtScNrKQsqZWzWHqaxSa108pfzDrpxT3p1ZQil8+FDDjzG/qN7zpJdxI1lz77Ja8QK/785bm2OOmLM/isboYvDX2CL7TBZeB3HpIxiP8QL/TO2jDo1rPoQCt/ri6uOnsZj6+AYxEMrpvJ4ONF+ikBAP5Zq1k1YuGRtEt98RtElkVmREbwQBl+6OZovxuAoyfl0YXaKQAxRPB37ZK4nGiTsbAzBnCJzwsrE2oIU7SFU4L0aQUtT5a8GqsxTzYVvlRZbyjSx/3B2FLgThepC1i6xF2xHKCl8cqAfCOWXjKmCIiyoWEsHZ9GMAaw2mZIhN7jeMPt/UMjCg6DY/tmesRRcPwXdU8CiJyPcF4phJY6qwKCuvuU91g2QCwyR31cjRkrQjL7S/zxMYYQyTHdf+EU/Cy5qT8JnCGziU74qNrGt0DB7iukJjMMK548jyXAMUjsEmwb6BtUPn3tfYsDf5CDe8h2CtPRzp+31hRIZ6Jm+gWxXd0GvOYQnbs4nGTR6QSXhYBlE5korTQ2cfx1BQn0bQ1kCYzEJrdgIhPBcZ6V0SRM3foYd5Qf++72/l0S/1EJng8N5TIq+Vsjdf1H4yrBrzHVTRFKd4QvLYF/ZJ+AtaWU030nFE5G2i1E+5THBiEnMPpzaerpNFujh2HcnO/rEH7WvtT3HepxPA2nh8hINaNSLfsUt0aEv9deKAka2NdmLKZsPwp4Mff6b0441UfuJPRuupdntzqq8VFrhmDyt/d3n+kYRRlp7fn6r/vJENIUWb/jMC6u18HZtg+aQfgWQJzLYNiZilhWYqHo1tsHMKrlqkjF4WPqV31lwi0Mw8Ns7Cv8pFH+uVZEPXXh+dhAC9jMofG2LJZX00jcZ6stmCl6PXyTwwDMlmmbqvBwCyeRARSWk6fcLSPmSx3v1DzchXaJljH1TICdIAAAAAAAAA",
@@ -68,7 +68,8 @@ export default function Logos() {
   return (
     <div className="flex flex-wrap max-sm:justify-center max-sm:items-center  thirdSectionImg max-sm:py-[64px] max-sm:px-[16px]">
       {data.map((e) => {
-        return <Draw title={e.title} url={e.url} />;
+        let key = id4
+        return <Draw key={key} title={e.title} url={e.url} />;
       })}
     </div>
   );
