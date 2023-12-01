@@ -30,10 +30,10 @@ export default function Navbar() {
           <p>About</p>
           <p>Work</p>
           <p>Testimonials</p>
-          <p>Contact</p>
+          <p>Contacdsadt</p>
        
         <div>
-        <button onClick={ThemeChange} c lassName="iconBtn dark:hidden">
+        <button onClick={ThemeChange} className="iconBtn dark:hidden">
             <SunIcon />
           </button>
           <button onClick={ThemeChange} className="hidden dark:flex">
