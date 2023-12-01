@@ -17,6 +17,7 @@ export default function Navbar() {
       setTheme('dark') 
       console.log(theme);
     }
+    console.log(theme);
   }
 
   return (
