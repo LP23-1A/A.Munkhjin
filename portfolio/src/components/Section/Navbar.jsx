@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`flex spaceBwn ml-[30px] px-[60px] ctrColumn md:w-[600px]    lg:w-[1280px] md:ml-[80px] `}>
+      <nav className={`flex spaceBwn ml-[30px] px-[10px]  ctrColumn     lg:max-w-[1280px] lg:px-[60px] md:ml-[80px] `}>
         <div>
 
         <h1 className="text-4xl font-bold text-black  dark:text-white">{"<SS/>"}</h1>
@@ -33,7 +33,7 @@ export default function Navbar() {
           <p>Contact</p>
        
         <div>
-        <button onClick={ThemeChange} className="iconBtn dark:hidden">
+        <button onClick={ThemeChange} c lassName="iconBtn dark:hidden">
             <SunIcon />
           </button>
           <button onClick={ThemeChange} className="hidden dark:flex">

@@ -2,13 +2,13 @@ import AboutBtn from "./Button";
 import Photo from "./../../../public/Pic1.png";
 export default function SecondMain() {
   return (
-    <div className="secondMain p-[80px] bg-[#F9FAFB] mt-[300px] dark:bg-[#111827] ">
+    <div className="secondMain p-[80px]  bg-[#F9FAFB] mt-[300px] dark:bg-[#111827] ">
         <div className="flex ctrRow" >     <AboutBtn /></div>
  
-      <div className="  sm:flex ctrRow marginTop48px flex-col   md:flex-row     ">
-        <div className="seconRight relative flex justify-center">
+      <div className="  justify-around  sm:flex  marginTop48px flex-col   md:flex-row     ">
+        <div className="seconRight relative z-10 flex justify-center">
           <img className="  min-w-[280px] h-[340px] lg:w-[400px] lg:h-[470px]" src={Photo.src} />
-          <div className="emptyBig dark:bg-[#374151]">
+          <div className="lg:emptyBig dark:bg-[#374151] ">
 
           </div>
         </div>
