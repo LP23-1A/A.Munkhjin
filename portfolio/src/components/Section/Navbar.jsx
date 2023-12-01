@@ -13,7 +13,7 @@ export default function Navbar() {
     if (theme == 'dark') {
       setTheme('light')
     }
-    if (theme == 'light' ) {
+    if (theme == 'light' || theme =='system' ) {
       setTheme('dark') 
       console.log(theme);
     }
@@ -29,7 +29,7 @@ export default function Navbar() {
         </div>
         <div className=" hidden md:flex ctrColumn gap24px dark:text-white ">
           
-          <p>About</p>
+          <p>Aboutdsad</p>
           <p>Work</p>
           <p>Testimonials</p>
           <p>Contacdsadt</p>
