@@ -1,3 +1,4 @@
+import { uuid as id4 } from "uuidv4"
 const data =[{
     suggest:"React"
 },
@@ -34,8 +35,9 @@ export default function Suggest() {
             {
                 data.map((e)=>
                 {
+                    let key =id4
                     return (
-                        <div className="flex">
+                        <div key={key} className="flex">
                             <p className="suggestBg   textalign dark:bg-[#374151] dark:text-white">{e.suggest}</p>
                         </div>
                     )

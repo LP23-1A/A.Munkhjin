@@ -15,6 +15,7 @@ export default function Navbar() {
     }
     if (theme == 'light' ) {
       setTheme('dark') 
+      console.log(theme);
     }
   }
 
