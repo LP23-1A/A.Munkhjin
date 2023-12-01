@@ -29,10 +29,10 @@ export default function Navbar() {
         </div>
         <div className=" hidden md:flex ctrColumn gap24px dark:text-white ">
           
-          <p>Aboutdsad</p>
+          <p>About</p>
           <p>Work</p>
           <p>Testimonials</p>
-          <p>Contacdsadt</p>
+          <p>Contact</p>
        
         <div>
         <button onClick={ThemeChange} className="iconBtn dark:hidden">
