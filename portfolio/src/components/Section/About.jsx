@@ -1,6 +1,6 @@
 import AboutBtn from "./Button";
 import Photo from "./../../../public/Pic1.png";
-export default function SecondMain() {
+export default function AboutSection() {
   return (
     <div className="secondMain p-[80px]  bg-[#F9FAFB] mt-[300px] dark:bg-[#111827] ">
         <div className="flex ctrRow" >     <AboutBtn /></div>

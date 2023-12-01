@@ -1,8 +1,8 @@
 import Navbar from "@/components/Section/Navbar";
 import Main from "@/components/Section/Main";
-import SecondMain from "@/components/Section/About";
-import ThirdMain from "@/components/Section/Skills";
-import FourthMain from "@/components/Section/Experience";
+import AboutSection from "@/components/Section/About";
+import SkillsSection from "@/components/Section/Skills";
+import Experience from "@/components/Section/Experience";
 import Work from "@/components/Section/Work";
 import Getintouch from "@/components/Section/GetInTouch";
 
@@ -17,11 +17,11 @@ export default function Home() {
         <Navbar  />
         <Main />
       <div >
-        <SecondMain  />
+        < AboutSection  />
       </div>
-      <ThirdMain />
+      <SkillsSection/>
       <div >
-      <FourthMain   />
+      <Experience  />
       </div>
       <Work />
       <Getintouch />

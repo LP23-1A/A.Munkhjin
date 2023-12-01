@@ -1,5 +1,5 @@
 import Logos from '@/components/Data/SkillsData'
-export default function ThirdMain() {
+export default function SkillsSection() {
   return (
     <>
       <div className="md:mt-[300px] ">

@@ -1,5 +1,5 @@
 import DrawFourth from "../Data/ExperienceData";
-export default function FourthMain() {
+export default function Experience() {
   return (
     <>
       <div className="max-w-full sm:w-full md:w-full lg:mt-[200px] experience dark:bg-[#111827]">
