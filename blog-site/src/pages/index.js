@@ -1,5 +1,6 @@
 import  { Card,ArticleProps } from "@/components/Article";
 import Trend from "@/components/Trending";
+import Navbar from "@/components/Navbar";
 const dataCard = [
   {
     img: "https://s3-alpha-sig.figma.com/img/3abf/26dd/585632b9d05dcfd0daffacedd55842f5?Expires=1702857600&Signature=GtIcIcyrku03di6uhi0mfVSqHwIdIsUNoUQebv4ln3q84G9ZINAh~g63In7v1hCCoAUoAP2aTUyCsm0UHjL-VzZqeJwqljXEBvlG38XfWgPV0jOZS41GSMMySeIgQ-5a6beEdkq3-nVqA8DtYQ5tFNSBjsKIZZlJohL6yXlNmptCXdFuApfCK6nWzmbfiNgeW-g3FK0QgNJNPlJaJFhYBW7ic31MDvl416i18XVjJb3BD8ahSb1F7OqOffjqQOGVpbAL4r4vPSLE8tV4YbaMpt1sknJsMh0hxR4lDqQ0txf88uFFFPq7xf9FpZyaEIntEtG8EVMtjjmahArIWExyCw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
@@ -36,8 +37,9 @@ console.log(dataTrending);
 export default function Home() {
  
   return (
-    <main className=" max-w-[1280px] flex flex-col justify-center items-center">
-       <div>
+    <main className="w-full r">
+       <Navbar/>
+       <div className=" flex justify-center">
         {dataTrending.map((e)=>{
           return ( <div>
             <Trend img={e.img} desc={e.desc} tag={e.tag}/>
@@ -46,7 +48,7 @@ export default function Home() {
           )
         })}
        </div>
-      <div className=" flex justify-between max-w-[1280px]">
+      <div className=" flex justify-between ">
         <div className="flex gap-10"> 
           <h2>All</h2>
           {dataTag.map((e) => {
@@ -55,7 +57,7 @@ export default function Home() {
         </div>
         <h2>View All</h2>
       </div>
-      <div>
+      <div className="flex justify-center">
         {dataCard.map((e) => {
           return <Card img={e.img} tag={e.tag} title={e.title} date={e.date} />;
         })}
