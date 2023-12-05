@@ -1,16 +1,11 @@
-import { Card, ArticleProps } from "@/components/Article";
+import { Card } from "@/components/Article";
 import Trend from "@/components/Trending";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel";
-import { useState } from "react";
-import { uuid  } from "uuidv4";
-
-const tags = ['all','design','travel','fashion','technology','branding','viewAll']
-// const {CategoryFilter, Setfilter} = useState()
-const CategoryHandler = () => {
-console.log(uuid());
-}
+import { useEffect, useState } from "react";
+import { uuid } from "uuidv4";
+import { DATA } from "@/components/constant/Data";
 
 const DATA_CAROUSEL = [
   {
@@ -20,15 +15,7 @@ const DATA_CAROUSEL = [
     date: "August 20, 2022",
   },
 ];
-const dataCard = [
-  {
-    img: "https://s3-alpha-sig.figma.com/img/3abf/26dd/585632b9d05dcfd0daffacedd55842f5?Expires=1702857600&Signature=GtIcIcyrku03di6uhi0mfVSqHwIdIsUNoUQebv4ln3q84G9ZINAh~g63In7v1hCCoAUoAP2aTUyCsm0UHjL-VzZqeJwqljXEBvlG38XfWgPV0jOZS41GSMMySeIgQ-5a6beEdkq3-nVqA8DtYQ5tFNSBjsKIZZlJohL6yXlNmptCXdFuApfCK6nWzmbfiNgeW-g3FK0QgNJNPlJaJFhYBW7ic31MDvl416i18XVjJb3BD8ahSb1F7OqOffjqQOGVpbAL4r4vPSLE8tV4YbaMpt1sknJsMh0hxR4lDqQ0txf88uFFFPq7xf9FpZyaEIntEtG8EVMtjjmahArIWExyCw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    tag: "Technology",
-    title:
-      "The Impact of Technology on the Workplace: How Technology is Changing",
-    date: "August 20, 2022 ",
-  },
-];
+
 const dataTrending = [
   {
     img: "https://s3-alpha-sig.figma.com/img/e8eb/3bce/c766a697a30822ccba768b03c5125ead?Expires=1702857600&Signature=mS1K5kWMKdlerCnD04RJL-32u2QR~P-BrzhJjc60wD~2aECa~ybTYlb3shy-lxMN5NrwHvXXBV5G5d9aoWO1RLwzHwAtF0728X2AY0vR0eOwB5zNxaMBkSM565DVEfM7aE0JTI3wA-wOYHs2JrtG5vy1d4qxM-adv6sPFGBeQVH7FTrfU-wOaagqWmRzlotOv1cxHZET7oPgA80Qf-g5BaxlL9l4Z74welNJLRWmUTygXksPWe7bdolzVHy5EBdWJ6r3hfazxLpk-mtePX1ea2lBTLfw1o~vw~3SZmhoJzDxCSz5OJdJkb8H1y3AMv9Q1N6QBuWNe2rCVdR6QeHDmQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
@@ -37,24 +24,18 @@ const dataTrending = [
   },
 ];
 
-const dataTag = [
-  {
-    tag: "Design",
-  },
-  {
-    tag: "Travel",
-  },
-  {
-    tag: "Fashion",
-  },
-  {
-    tag: "Technology",
-  },
-  {
-    tag: "Branding",
-  },
-];
 export default function Home() {
+  const [ArticleData, setData] = useState([]);
+  const [categoryData, setCollection] = useState([]);
+  useEffect(() => {
+    setData(DATA);
+    setCollection([...new Set(ArticleData.map((item) => item.category))]);
+  }, []);
+  const Changer = (itemData) => {
+    const filterData = ArticleData.filter((item) => item.category == itemData);
+    setData(filterData);
+  };
+
   return (
     <main className="w-full ">
       <Navbar />
@@ -84,27 +65,44 @@ export default function Home() {
         })}
       </div>
       <div className="flex items-center flex-col mt-[100px]">
-        <p className="flex justify-start w-[1540px] font-bold text-[24px]">
+        <p className="flex justify-start w-[1440px] font-bold text-[24px]">
           All Blog Post
         </p>
         <div className=" flex justify-between w-full px-[352px] mt-[32px]">
           <div className="flex gap-[20px]">
-            <h2 onClick={CategoryHandler} className="text-[12px] font-sans font-[700] text-[#D4A373]">
+            <button
+              onClick={() => setData(DATA)}
+              className="text-[12px] font-sans font-[700] text-[#D4A373]"
+            >
               All
-            </h2>
-            {dataTag.map((e) => {
-              let key = uuid()
-              return <ArticleProps key={key} onClick={CategoryHandler} tag={e.tag} />;
+            </button>
+            {categoryData.map((item) => {
+              return (
+                <button
+                  onClick={() => {
+                    Changer(item);
+                  }}
+                >
+                  {item}
+                </button>
+              );
             })}
           </div>
-          <h2 onClick={CategoryHandler} className="text-[12px] font-sans font-[700] text-[#495057]">
+          <button className="text-[12px] font-sans font-[700] text-[#495057]">
             View All
-          </h2>
+          </button>
         </div>
         <div className="flex justify-center mt-[32px]">
-          {dataCard.map((e) => {
+          {ArticleData.map((item) => {
             return (
-              <Card img={e.img} tag={e.tag} title={e.title} date={e.date} />
+              <Card
+                keyid={item.id}
+                img={item.img}
+                tag={item.tag}
+                title={item.title}
+                category={item.category}
+                date={item.date}
+              />
             );
           })}
         </div>
