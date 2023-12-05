@@ -3,12 +3,23 @@ import Trend from "@/components/Trending";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel";
-const DATA_CAROUSEL= [{
-  img:"https://s3-alpha-sig.figma.com/img/eb4f/aad2/4394e91108e011b0d07581596959713b?Expires=1702857600&Signature=TEJqgZebhD5ngGJk43qte2~qf859bguz1g9w0nc-t-7JwZKqGO9HkQ4f7UsByRTKRdqOFoXLq-GeNWVTxyF9yaI-X8jNnKzpHHPB0mwm5217XLBDvleUnawK8Q52jyuf37X~tBpedwk-oALlTZsspRn-XWzxdTRQOMwtXGLvj~Kv~0VS~Cxf7gUiI44x1oZGIcO9HQbL7oAr57JaTLqKz-5STAIIaCV4bEzUKUSd3x8o89LHrwfVdB1rnbaOm-NrwsFjsCGap2EeymdGc1fM9MLK7cYBadPJIs062VLD9cvqO4LZZ7kzDuD2FWVmWuhODVPANFGn0YJgP78jzOayAg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-  tag:"Techonology",
-  desc:"Grid system for better Design User Interface",
-  date:"August 20, 2022"
-}]
+import { useState } from "react";
+import { uuid  } from "uuidv4";
+
+const tags = ['all','design','travel','fashion','technology','branding','viewAll']
+// const {CategoryFilter, Setfilter} = useState()
+const CategoryHandler = () => {
+console.log(uuid());
+}
+
+const DATA_CAROUSEL = [
+  {
+    img: "https://s3-alpha-sig.figma.com/img/eb4f/aad2/4394e91108e011b0d07581596959713b?Expires=1702857600&Signature=TEJqgZebhD5ngGJk43qte2~qf859bguz1g9w0nc-t-7JwZKqGO9HkQ4f7UsByRTKRdqOFoXLq-GeNWVTxyF9yaI-X8jNnKzpHHPB0mwm5217XLBDvleUnawK8Q52jyuf37X~tBpedwk-oALlTZsspRn-XWzxdTRQOMwtXGLvj~Kv~0VS~Cxf7gUiI44x1oZGIcO9HQbL7oAr57JaTLqKz-5STAIIaCV4bEzUKUSd3x8o89LHrwfVdB1rnbaOm-NrwsFjsCGap2EeymdGc1fM9MLK7cYBadPJIs062VLD9cvqO4LZZ7kzDuD2FWVmWuhODVPANFGn0YJgP78jzOayAg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
+    tag: "Techonology",
+    desc: "Grid system for better Design User Interface",
+    date: "August 20, 2022",
+  },
+];
 const dataCard = [
   {
     img: "https://s3-alpha-sig.figma.com/img/3abf/26dd/585632b9d05dcfd0daffacedd55842f5?Expires=1702857600&Signature=GtIcIcyrku03di6uhi0mfVSqHwIdIsUNoUQebv4ln3q84G9ZINAh~g63In7v1hCCoAUoAP2aTUyCsm0UHjL-VzZqeJwqljXEBvlG38XfWgPV0jOZS41GSMMySeIgQ-5a6beEdkq3-nVqA8DtYQ5tFNSBjsKIZZlJohL6yXlNmptCXdFuApfCK6nWzmbfiNgeW-g3FK0QgNJNPlJaJFhYBW7ic31MDvl416i18XVjJb3BD8ahSb1F7OqOffjqQOGVpbAL4r4vPSLE8tV4YbaMpt1sknJsMh0hxR4lDqQ0txf88uFFFPq7xf9FpZyaEIntEtG8EVMtjjmahArIWExyCw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
@@ -43,28 +54,22 @@ const dataTag = [
     tag: "Branding",
   },
 ];
-console.log(dataTrending);
 export default function Home() {
   return (
     <main className="w-full ">
       <Navbar />
       <div className=" flex items-center flex-col mt-[100px]">
-        {DATA_CAROUSEL.map((e)=>{
-          return ( 
+        {DATA_CAROUSEL.map((e) => {
+          return (
             <>
-            <Carousel img={e.img} tag={e.tag} desc={e.desc} date={e.date} />
+              <Carousel img={e.img} tag={e.tag} desc={e.desc} date={e.date} />
             </>
-          )
+          );
         })}
         <div className="flex justify-end w-[1180px]">
-        <button className="rounded-[6px] border-[1px] p-[10px]">
-         {"<"}
-        </button>
-        <button className="rounded-[6px] border-[1px] p-[10px]">
-         {">"}
-        </button>
+          <button className="rounded-[6px] border-[1px] p-[10px]">{"<"}</button>
+          <button className="rounded-[6px] border-[1px] p-[10px]">{">"}</button>
         </div>
-       
       </div>
       <div className=" flex items-center flex-col">
         <p className="flex justify-start w-[1540px] font-bold text-[24px]">
@@ -78,27 +83,34 @@ export default function Home() {
           );
         })}
       </div>
-      <div className="flex items-center flex-col mt-[100px]" >
-      <p className="flex justify-start w-[1540px] font-bold text-[24px]">
-     All Blog Post
+      <div className="flex items-center flex-col mt-[100px]">
+        <p className="flex justify-start w-[1540px] font-bold text-[24px]">
+          All Blog Post
         </p>
-      <div className=" flex justify-between w-full px-[352px] mt-[32px]">
-        <div className="flex gap-[20px]">
-          <h2 className="text-[12px] font-sans font-[700] text-[#D4A373]">All</h2>
-          {dataTag.map((e) => {
-            return <ArticleProps tag={e.tag} />;
+        <div className=" flex justify-between w-full px-[352px] mt-[32px]">
+          <div className="flex gap-[20px]">
+            <h2 onClick={CategoryHandler} className="text-[12px] font-sans font-[700] text-[#D4A373]">
+              All
+            </h2>
+            {dataTag.map((e) => {
+              let key = uuid()
+              return <ArticleProps key={key} onClick={CategoryHandler} tag={e.tag} />;
+            })}
+          </div>
+          <h2 onClick={CategoryHandler} className="text-[12px] font-sans font-[700] text-[#495057]">
+            View All
+          </h2>
+        </div>
+        <div className="flex justify-center mt-[32px]">
+          {dataCard.map((e) => {
+            return (
+              <Card img={e.img} tag={e.tag} title={e.title} date={e.date} />
+            );
           })}
         </div>
-        <h2 className="text-[12px] font-sans font-[700] text-[#495057]">View All</h2>
-      </div>
-      <div className="flex justify-center mt-[32px]">
-        {dataCard.map((e) => {
-          return <Card img={e.img} tag={e.tag} title={e.title} date={e.date} />;
-        })}
-      </div>
-      <button className="px-[20px] py-[12px] border-[1px] mt-[100px] rounded-[6px] font-sans text-[16px] font-[600] text-[#696A75]">
-        Load More
-      </button>
+        <button className="px-[20px] py-[12px] border-[1px] mt-[100px] rounded-[6px] font-sans text-[16px] font-[600] text-[#696A75]">
+          Load More
+        </button>
       </div>
       <Footer />
     </main>
