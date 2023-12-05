@@ -11,7 +11,7 @@ export default function Trending(props) {
                 {props.desc}
             </p>
             </div>
-        <span className=" bg-black h-[320px] w-[289px] absolute top-0 opacity-20"></span>
+        <span className=" bg-black rounded-[12px] h-[320px] w-[289px] absolute top-0 opacity-20"></span>
         </div>
     )
     

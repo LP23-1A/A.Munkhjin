@@ -1,7 +1,7 @@
 import MetaBLogIcon from "@/Icons/MetablogIcon"
 export default function Navbar() {
     return(
-        <div className=" flex justify-between items-center">
+        <div className=" flex justify-between items-center py-[32px] px-[352px]">
         <MetaBLogIcon/>
         <div className="flex gap-[40px] ">
             <p>Home</p>

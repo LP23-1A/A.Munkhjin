@@ -2,7 +2,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "@/Icons/SocialIcons";
 import MetaBLogIcon from "@/Icons/MetablogIcon";
 export default function Footer() {
   return (
-    <footer className="bg-[#F6F6F7] pt-[64px] px-[352px]">
+    <footer className="bg-[#F6F6F7] pt-[64px] px-[352px] mt-[100px]">
       <div className=" flex justify-between">
         <div>
           <p>About</p>

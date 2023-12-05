@@ -16,7 +16,7 @@
  function ArticleProps(props) {
     return(
         <div>
-        <h2>{props.tag}</h2>
+        <p className="text-[12px] font-sans font-[700] text-[#495057]">{props.tag}</p>
     </div>
     )
     
