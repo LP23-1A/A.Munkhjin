@@ -6,6 +6,7 @@ import Carousel from "@/components/Carousel";
 import { useEffect, useState } from "react";
 import { uuid } from "uuidv4";
 import { DATA } from "@/components/constant/Data";
+import axios from "axios";
 
 const DATA_CAROUSEL = [
   {
@@ -23,22 +24,41 @@ const dataTrending = [
     desc: "The Impact of Technology on the Workplace: How Technology is Changing",
   },
 ];
-
+let API =  "https://dev.to/api/articles?username=gereltuyamz"
 export default function Home() {
-  const [ArticleData, setData] = useState([]);
-  const [categoryData, setCollection] = useState([]);
+  const [articleData, setArticleData] = useState([]);
+  const [categories, setCategories] = useState(null);
+  const [filteredArticleData, setFilteredArticleData] = useState(null);
+const getData = async (API)=>{
+    let response =await axios.get(API)
+    console.log(response.articleData)
+    setArticleData((prev)=>[...prev,...response.articleData]
+  )
+} 
+useEffect(()=> {
+  getData(API)
+},[])
   useEffect(() => {
-    setData(DATA);
-    setCollection([...new Set(ArticleData.map((item) => item.category))]);
-  }, []);
-  const Changer = (itemData) => {
-    const filterData = ArticleData.filter((item) => item.category == itemData);
-    setData(filterData);
-  };
+    setArticleData(DATA);
+    setCategories([...new Set(DATA.map((item) => item.category))]);
+  }, []); 
 
+  useEffect(() => {
+    setFilteredArticleData(articleData);
+  }, [articleData]); 
+
+  const filterByCategory = (itemData, category) => {
+    if (category && category == "all") {
+      setFilteredArticleData(articleData);
+      return;
+    }
+    const filterData = articleData.filter((item) => item.category == itemData);
+    setFilteredArticleData(filterData);
+  };
   return (
     <main className="w-full ">
       <Navbar />
+
       <div className=" flex items-center flex-col mt-[100px]">
         {DATA_CAROUSEL.map((e) => {
           return (
@@ -71,40 +91,42 @@ export default function Home() {
         <div className=" flex justify-between w-full px-[352px] mt-[32px]">
           <div className="flex gap-[20px]">
             <button
-              onClick={() => setData(DATA)}
+              onClick={() => filterByCategory("", "all")}
               className="text-[12px] font-sans font-[700] text-[#D4A373]"
             >
               All
             </button>
-            {categoryData.map((item) => {
-              return (
-                <button
-                  onClick={() => {
-                    Changer(item);
-                  }}
-                >
-                  {item}
-                </button>
-              );
-            })}
+            {categories &&
+              categories.map((item) => {
+                return (
+                  <button
+                    onClick={() => {
+                      filterByCategory(item);
+                    }}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
           </div>
           <button className="text-[12px] font-sans font-[700] text-[#495057]">
             View All
           </button>
         </div>
-        <div className="flex justify-center mt-[32px]">
-          {ArticleData.map((item) => {
-            return (
-              <Card
-                keyid={item.id}
-                img={item.img}
-                tag={item.tag}
-                title={item.title}
-                category={item.category}
-                date={item.date}
-              />
-            );
-          })}
+        <div className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap">
+          {filteredArticleData &&
+            filteredArticleData?.map((item) => {
+              return (
+                <Card
+                  id={item.id}
+                  img={item.img}
+                  tag={item.tag}
+                  title={item.title}
+                  category={item.category}
+                  date={item.date}
+                />
+              );
+            })}
         </div>
         <button className="px-[20px] py-[12px] border-[1px] mt-[100px] rounded-[6px] font-sans text-[16px] font-[600] text-[#696A75]">
           Load More
