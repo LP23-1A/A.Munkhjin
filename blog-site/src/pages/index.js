@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel";
 import { useEffect, useState } from "react";
 import { uuid } from "uuidv4";
-import { DATA } from "@/components/constant/Data";
+import DATA from "@/components/constant/Data";
 import axios from "axios";
 
 const DATA_CAROUSEL = [
@@ -24,23 +24,28 @@ const dataTrending = [
     desc: "The Impact of Technology on the Workplace: How Technology is Changing",
   },
 ];
-let API =  "https://dev.to/api/articles?username=gereltuyamz"
+let data2 =axios.get('https://dev.to/api/articles?username=gereltuyamz')
+
 export default function Home() {
+  const [data,setData]=useState([])
+  console.log(data);
+  useEffect(() => {
+  
+    const fetchData = async () => {
+  
+        const response = await data ;
+         
+        setData(response.data);
+    };
+    fetchData();
+  }, []);
   const [articleData, setArticleData] = useState([]);
   const [categories, setCategories] = useState(null);
   const [filteredArticleData, setFilteredArticleData] = useState(null);
-const getData = async (API)=>{
-    let response =await axios.get(API)
-    console.log(response.articleData)
-    setArticleData((prev)=>[...prev,...response.articleData]
-  )
-} 
-useEffect(()=> {
-  getData(API)
-},[])
+
   useEffect(() => {
-    setArticleData(DATA);
-    setCategories([...new Set(DATA.map((item) => item.category))]);
+    setArticleData(data);
+    setCategories([...new Set(data.map((item) => item.tags))]);
   }, []); 
 
   useEffect(() => {
@@ -52,7 +57,7 @@ useEffect(()=> {
       setFilteredArticleData(articleData);
       return;
     }
-    const filterData = articleData.filter((item) => item.category == itemData);
+    const filterData = articleData.filter((item) => item.tags == itemData);
     setFilteredArticleData(filterData);
   };
   return (
@@ -119,10 +124,10 @@ useEffect(()=> {
               return (
                 <Card
                   id={item.id}
-                  img={item.img}
+                  social_image={item.social_image}
                   tag={item.tag}
                   title={item.title}
-                  category={item.category}
+                  tags={item.tags}
                   date={item.date}
                 />
               );
