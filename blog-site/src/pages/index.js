@@ -24,33 +24,27 @@ const dataTrending = [
     desc: "The Impact of Technology on the Workplace: How Technology is Changing",
   },
 ];
-let data2 =axios.get('https://dev.to/api/articles?username=gereltuyamz')
+let api= axios.get("https://dev.to/api/articles?username=gereltuyamz");
 
 export default function Home() {
-  const [data,setData]=useState([])
-  console.log(data);
-  useEffect(() => {
-  
-    const fetchData = async () => {
-  
-        const response = await data ;
-         
-        setData(response.data);
-    };
-    fetchData();
-  }, []);
   const [articleData, setArticleData] = useState([]);
-  const [categories, setCategories] = useState(null);
-  const [filteredArticleData, setFilteredArticleData] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [filteredArticleData, setFilteredArticleData] = useState([]);
+  const [articleCount,setArticleCount] = useState(3);
 
   useEffect(() => {
-    setArticleData(data);
-    setCategories([...new Set(data.map((item) => item.tags))]);
-  }, []); 
+    const fetchData = async () => {
+      const response = await api;
+      setArticleData(response.data)
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     setFilteredArticleData(articleData);
-  }, [articleData]); 
+    setCategories([...new Set(articleData.map((item) => item.tags))]);
+  }, [articleData]);
 
   const filterByCategory = (itemData, category) => {
     if (category && category == "all") {
@@ -60,6 +54,9 @@ export default function Home() {
     const filterData = articleData.filter((item) => item.tags == itemData);
     setFilteredArticleData(filterData);
   };
+  const handleLoadMore = () =>{
+setArticleCount((prev) => prev + 3);
+  }
   return (
     <main className="w-full ">
       <Navbar />
@@ -120,7 +117,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap">
           {filteredArticleData &&
-            filteredArticleData?.map((item) => {
+            filteredArticleData.slice(0,articleCount).map((item) => {
               return (
                 <Card
                   id={item.id}
@@ -128,14 +125,19 @@ export default function Home() {
                   tag={item.tag}
                   title={item.title}
                   tags={item.tags}
-                  date={item.date}
+                  readable_publish_date={item.readable_publish_date}
                 />
               );
             })}
-        </div>
-        <button className="px-[20px] py-[12px] border-[1px] mt-[100px] rounded-[6px] font-sans text-[16px] font-[600] text-[#696A75]">
+        </div>    {articleCount < filteredArticleData.length && (
+        <button
+          onClick={handleLoadMore}
+          className="px-[20px] py-[12px] border-[1px] mt-[20px] rounded-[6px] font-sans text-[16px] font-[600] text-[#696A75]"
+        >
           Load More
         </button>
+      )}
+    
       </div>
       <Footer />
     </main>
