@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel";
 import { useEffect, useState } from "react";
 import { uuid } from "uuidv4";
-import DATA from "@/components/constant/Data";
 import axios from "axios";
+import BlogList from "./blogList";
 
 const DATA_CAROUSEL = [
   {
@@ -24,8 +24,7 @@ const dataTrending = [
     desc: "The Impact of Technology on the Workplace: How Technology is Changing",
   },
 ];
-let api= axios.get("https://dev.to/api/articles?username=gereltuyamz");
-
+let api= axios.get("https://dev.to/api/articles?username=gereltuyamz")
 export default function Home() {
   const [articleData, setArticleData] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -34,12 +33,18 @@ export default function Home() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await api;
-      setArticleData(response.data)
+      try {   const response = await api;
+        setArticleData(response.data)}
+   catch (err){
+    console.log('aldaa', err);
+   }
     };
 
     fetchData();
   }, []);
+
+
+
 
   useEffect(() => {
     setFilteredArticleData(articleData);
@@ -57,6 +62,7 @@ export default function Home() {
   const handleLoadMore = () =>{
 setArticleCount((prev) => prev + 3);
   }
+
   return (
     <main className="w-full ">
       <Navbar />
@@ -101,7 +107,7 @@ setArticleCount((prev) => prev + 3);
             {categories &&
               categories.map((item) => {
                 return (
-                  <button
+                  <button  className="text-[12px] font-sans font-[700] text-[#495057]"
                     onClick={() => {
                       filterByCategory(item);
                     }}
@@ -111,7 +117,7 @@ setArticleCount((prev) => prev + 3);
                 );
               })}
           </div>
-          <button className="text-[12px] font-sans font-[700] text-[#495057]">
+          <button    className="text-[12px] font-sans font-[700] text-[#495057]">
             View All
           </button>
         </div>
