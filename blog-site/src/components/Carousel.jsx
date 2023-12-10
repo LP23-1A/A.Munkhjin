@@ -2,7 +2,7 @@ export default function Carousel(props) {
   return (
     <div key={props.index}
       className="bg-cover w-[1216px] h-[600px] rounded-[12px] relative "
-      style={{ backgroundImage: `url(${props.social_image})` }}
+      style={{ backgroundImage: `url(${props.image})` }}
     >
       <div className=" bg-white w-[518px]  p-[40px] absolute bottom-0 mb-[13px] ml-[11px] rounded-[12px] ">
         <p className=" text-white px-[10px] py-[4px] flex justify-center  rounded-[6px] bg-[#4B6BFB] w-fit text-[14px]">

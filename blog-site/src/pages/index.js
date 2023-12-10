@@ -8,6 +8,7 @@ import { uuid } from "uuidv4";
 import axios from "axios";
 import BlogList from "./blogList";
 import { data } from "autoprefixer";
+import { DATA_CAROUSEL } from "@/components/constant/DataCarousel";
 
 
 const dataTrending = [
@@ -23,8 +24,7 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
   const [filteredArticleData, setFilteredArticleData] = useState([]);
   const [articleCount,setArticleCount] = useState(3);
-  const [currentIndex,setCurrentIndex]= useState(0)
-  const carouselRef= useRef(null)
+  const [index, setIndex] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       const response = await api;
@@ -53,31 +53,36 @@ export default function Home() {
   const handleLoadMore = () =>{
 setArticleCount((prev) => prev + 3);
   } 
-  const prevSlide =()=>{
-    setCurrentIndex((prev)=>( prev -1 +articleData.length)%articleData.length)
-    console.log(setCurrentIndex);
-  }
-  console.log(setCurrentIndex);
-  const nextSlide = () =>{
-    setCurrentIndex((next)=> (next +1)%articleData.length)
-  }
+ 
+   const prevSlide = () => {
+    setIndex((prevIndex) => (prevIndex === 0 ? DATA_CAROUSEL.length - 1 : prevIndex - 1));
+  };
+  const nextSlide = () => {
+    setIndex((prevIndex) => (prevIndex === DATA_CAROUSEL.length - 1 ? 0 : prevIndex + 1));
+  };
+  console.log(index);
   return (
     <main className="w-full ">
       <Navbar />
 
-      <div  ref={carouselRef}  className=" flex items-center flex-col mt-[100px]">
-      {console.log(carouselRef)}
-        {articleData.map((e,index) => {
-          return (
-            <div key={index} className={`${index=== currentIndex ? "active":''}`}>
-              <Carousel social_image={e.social_image} tags={e.tags} desc={e.title} date={e.date} />
+      <div className="flex items-center flex-col mt-[100px]">
+      
+          <>
+            { DATA_CAROUSEL && DATA_CAROUSEL.map((e) => (
+              <div>
+                <Carousel activeIndex={index} image={e.img} tags={e.tags} desc={e.title} date={e.date} />
+              </div>
+            ))}
+            <div className="flex justify-end w-[1180px]">
+              <button onClick={prevSlide} className="rounded-[6px] border-[1px] p-[10px]">
+                {"<"}
+              </button>
+              <button onClick={nextSlide} className="rounded-[6px] border-[1px] p-[10px]">
+                {">"}
+              </button>
             </div>
-          );
-        })}
-        <div className="flex justify-end w-[1180px]">
-          <button onClick={prevSlide} className="rounded-[6px] border-[1px] p-[10px]">{"<"}</button>
-          <button onClick={nextSlide} className="rounded-[6px] border-[1px] p-[10px]">{">"}</button>
-        </div>
+          </>
+      
       </div>
       <div className=" flex items-center flex-col">
         <p className="flex justify-start w-[1540px] font-bold text-[24px]">
