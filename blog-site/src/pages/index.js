@@ -3,19 +3,12 @@ import Trend from "@/components/Trending";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { uuid } from "uuidv4";
 import axios from "axios";
 import BlogList from "./blogList";
+import { data } from "autoprefixer";
 
-const DATA_CAROUSEL = [
-  {
-    img: "https://s3-alpha-sig.figma.com/img/eb4f/aad2/4394e91108e011b0d07581596959713b?Expires=1702857600&Signature=TEJqgZebhD5ngGJk43qte2~qf859bguz1g9w0nc-t-7JwZKqGO9HkQ4f7UsByRTKRdqOFoXLq-GeNWVTxyF9yaI-X8jNnKzpHHPB0mwm5217XLBDvleUnawK8Q52jyuf37X~tBpedwk-oALlTZsspRn-XWzxdTRQOMwtXGLvj~Kv~0VS~Cxf7gUiI44x1oZGIcO9HQbL7oAr57JaTLqKz-5STAIIaCV4bEzUKUSd3x8o89LHrwfVdB1rnbaOm-NrwsFjsCGap2EeymdGc1fM9MLK7cYBadPJIs062VLD9cvqO4LZZ7kzDuD2FWVmWuhODVPANFGn0YJgP78jzOayAg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    tag: "Techonology",
-    desc: "Grid system for better Design User Interface",
-    date: "August 20, 2022",
-  },
-];
 
 const dataTrending = [
   {
@@ -30,7 +23,8 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
   const [filteredArticleData, setFilteredArticleData] = useState([]);
   const [articleCount,setArticleCount] = useState(3);
-
+  const [currentIndex,setCurrentIndex]= useState(0)
+  const carouselRef= useRef(null)
   useEffect(() => {
     const fetchData = async () => {
       try {   const response = await api;
@@ -61,23 +55,31 @@ export default function Home() {
   };
   const handleLoadMore = () =>{
 setArticleCount((prev) => prev + 3);
+  } 
+  const prevSlide =()=>{
+    setCurrentIndex((prev)=>( prev -1 +articleData.length)%articleData.length)
+    console.log(setCurrentIndex);
   }
-
+  console.log(setCurrentIndex);
+  const nextSlide = () =>{
+    setCurrentIndex((next)=> (next +1)%articleData.length)
+  }
   return (
     <main className="w-full ">
       <Navbar />
 
-      <div className=" flex items-center flex-col mt-[100px]">
-        {DATA_CAROUSEL.map((e) => {
+      <div  ref={carouselRef}  className=" flex items-center flex-col mt-[100px]">
+      {console.log(carouselRef)}
+        {articleData.map((e,index) => {
           return (
-            <>
-              <Carousel img={e.img} tag={e.tag} desc={e.desc} date={e.date} />
-            </>
+            <div key={index} className={`${index=== currentIndex ? "active":''}`}>
+              <Carousel social_image={e.social_image} tags={e.tags} desc={e.title} date={e.date} />
+            </div>
           );
         })}
         <div className="flex justify-end w-[1180px]">
-          <button className="rounded-[6px] border-[1px] p-[10px]">{"<"}</button>
-          <button className="rounded-[6px] border-[1px] p-[10px]">{">"}</button>
+          <button onClick={prevSlide} className="rounded-[6px] border-[1px] p-[10px]">{"<"}</button>
+          <button onClick={nextSlide} className="rounded-[6px] border-[1px] p-[10px]">{">"}</button>
         </div>
       </div>
       <div className=" flex items-center flex-col">
