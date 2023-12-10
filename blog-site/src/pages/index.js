@@ -27,12 +27,9 @@ export default function Home() {
   const carouselRef= useRef(null)
   useEffect(() => {
     const fetchData = async () => {
-      try {   const response = await api;
+      const response = await api;
         setArticleData(response.data)}
-   catch (err){
-    console.log('aldaa', err);
-   }
-    };
+
 
     fetchData();
   }, []);
