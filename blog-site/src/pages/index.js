@@ -6,10 +6,8 @@ import Carousel from "@/components/Carousel";
 import { useEffect, useState } from "react";
 import { uuid } from "uuidv4";
 import axios from "axios";
-import BlogList from "./blogList";
-import { data } from "autoprefixer";
-import { DATA_CAROUSEL } from "@/components/constant/DataCarousel";
 import { Router, useRouter } from "next/router";
+import Link from "next/link";
 
 const dataTrending = [
   {
@@ -64,7 +62,7 @@ export default function Home() {
     setIndex((prevIndex) =>
       prevIndex === articleData.length - 1 ? 0 : prevIndex + 1
     );
-  };  
+  };
   return (
     <main className="w-full ">
       <Navbar blog={viewAll} />
@@ -145,14 +143,18 @@ export default function Home() {
           {filteredArticleData &&
             filteredArticleData.slice(0, articleCount).map((item) => {
               return (
-                <Card
-                  id={item.id}
-                  social_image={item.social_image}
-                  tag={item.tag}
-                  title={item.title}
-                  tags={item.tags}
-                  readable_publish_date={item.readable_publish_date}
-                />
+                <Link href={`/blogDetail/${item.id}` } uid={item.id}>
+               
+                  <Card
+                    id={item.id}
+                    social_image={item.social_image}
+                    tag={item.tag}
+                    title={item.title}
+                    tags={item.tags}
+                    readable_publish_date={item.readable_publish_date}
+                  />
+            
+              </Link>
               );
             })}
         </div>{" "}
