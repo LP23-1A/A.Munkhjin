@@ -1,6 +1,10 @@
 export default function Carousel(props) {
+  const index = 0; // useState
+
+  //handler
   return (
-    <div key={props.index}
+    <div
+      key={props.index}
       className="bg-cover w-[1216px] h-[600px] rounded-[12px] relative "
       style={{ backgroundImage: `url(${props.image})` }}
     >
@@ -11,7 +15,7 @@ export default function Carousel(props) {
         <p className="text-black mt-[16px] font-bold text-[36px] h-[80px] leading-[40px] not-italic font-sans">
           {props.desc}
         </p>
-        <p className="mt-[20px] text-[#97989F] text-[16px] font-[400]">
+        <p className="mt-[40px] text-[#97989F] text-[16px] font-[400]">
           {props.date}
         </p>
       </div>

@@ -3,13 +3,13 @@ import Trend from "@/components/Trending";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Carousel from "@/components/Carousel";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { uuid } from "uuidv4";
 import axios from "axios";
 import BlogList from "./blogList";
 import { data } from "autoprefixer";
 import { DATA_CAROUSEL } from "@/components/constant/DataCarousel";
-
+import { Router, useRouter } from "next/router";
 
 const dataTrending = [
   {
@@ -18,24 +18,25 @@ const dataTrending = [
     desc: "The Impact of Technology on the Workplace: How Technology is Changing",
   },
 ];
-let api= axios.get("https://dev.to/api/articles?username=gereltuyamz")
+let api = axios.get("https://dev.to/api/articles?username=gereltuyamz");
 export default function Home() {
   const [articleData, setArticleData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filteredArticleData, setFilteredArticleData] = useState([]);
-  const [articleCount,setArticleCount] = useState(3);
+  const [articleCount, setArticleCount] = useState(3);
   const [index, setIndex] = useState(0);
+  const router = useRouter();
+  const viewAll = () => {
+    router.push("/blogList");
+  };
   useEffect(() => {
     const fetchData = async () => {
       const response = await api;
-        setArticleData(response.data)}
-
+      setArticleData(response.data);
+    };
 
     fetchData();
   }, []);
-
-
-
 
   useEffect(() => {
     setFilteredArticleData(articleData);
@@ -50,39 +51,50 @@ export default function Home() {
     const filterData = articleData.filter((item) => item.tags == itemData);
     setFilteredArticleData(filterData);
   };
-  const handleLoadMore = () =>{
-setArticleCount((prev) => prev + 3);
-  } 
- 
-   const prevSlide = () => {
-    setIndex((prevIndex) => (prevIndex === 0 ? DATA_CAROUSEL.length - 1 : prevIndex - 1));
+  const handleLoadMore = () => {
+    setArticleCount((prev) => prev + 3);
+  };
+
+  const prevSlide = () => {
+    setIndex((prevIndex) =>
+      prevIndex === 0 ? articleData.length - 1 : prevIndex - 1
+    );
   };
   const nextSlide = () => {
-    setIndex((prevIndex) => (prevIndex === DATA_CAROUSEL.length - 1 ? 0 : prevIndex + 1));
-  };
-  console.log(index);
+    setIndex((prevIndex) =>
+      prevIndex === articleData.length - 1 ? 0 : prevIndex + 1
+    );
+  };  
   return (
     <main className="w-full ">
-      <Navbar />
+      <Navbar blog={viewAll} />
 
       <div className="flex items-center flex-col mt-[100px]">
-      
-          <>
-            { DATA_CAROUSEL && DATA_CAROUSEL.map((e) => (
-              <div>
-                <Carousel activeIndex={index} image={e.img} tags={e.tags} desc={e.title} date={e.date} />
-              </div>
-            ))}
-            <div className="flex justify-end w-[1180px]">
-              <button onClick={prevSlide} className="rounded-[6px] border-[1px] p-[10px]">
-                {"<"}
-              </button>
-              <button onClick={nextSlide} className="rounded-[6px] border-[1px] p-[10px]">
-                {">"}
-              </button>
-            </div>
-          </>
-      
+        <>
+          {articleData.length !== 0 && (
+            <Carousel
+              activeIndex={index}
+              image={articleData[index].social_image}
+              tags={articleData[index].tags}
+              desc={articleData[index].title}
+              date={articleData[index].readable_publish_date}
+            />
+          )}
+          <div className="flex justify-end w-[1180px]">
+            <button
+              onClick={prevSlide}
+              className="rounded-[6px] border-[1px] p-[10px]"
+            >
+              {"<"}
+            </button>
+            <button
+              onClick={nextSlide}
+              className="rounded-[6px] border-[1px] p-[10px]"
+            >
+              {">"}
+            </button>
+          </div>
+        </>
       </div>
       <div className=" flex items-center flex-col">
         <p className="flex justify-start w-[1540px] font-bold text-[24px]">
@@ -111,7 +123,8 @@ setArticleCount((prev) => prev + 3);
             {categories &&
               categories.map((item) => {
                 return (
-                  <button  className="text-[12px] font-sans font-[700] text-[#495057]"
+                  <button
+                    className="text-[12px] font-sans font-[700] text-[#495057]"
                     onClick={() => {
                       filterByCategory(item);
                     }}
@@ -121,13 +134,16 @@ setArticleCount((prev) => prev + 3);
                 );
               })}
           </div>
-          <button    className="text-[12px] font-sans font-[700] text-[#495057]">
+          <button
+            onClick={viewAll}
+            className="text-[12px] font-sans font-[700] text-[#495057]"
+          >
             View All
           </button>
         </div>
         <div className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap">
           {filteredArticleData &&
-            filteredArticleData.slice(0,articleCount).map((item) => {
+            filteredArticleData.slice(0, articleCount).map((item) => {
               return (
                 <Card
                   id={item.id}
@@ -139,15 +155,15 @@ setArticleCount((prev) => prev + 3);
                 />
               );
             })}
-        </div>    {articleCount < filteredArticleData.length && (
-        <button
-          onClick={handleLoadMore}
-          className="px-[20px] py-[12px] border-[1px] mt-[20px] rounded-[6px] font-sans text-[16px] font-[600] text-[#696A75]"
-        >
-          Load More
-        </button>
-      )}
-    
+        </div>{" "}
+        {articleCount < filteredArticleData.length && (
+          <button
+            onClick={handleLoadMore}
+            className="px-[20px] py-[12px] border-[1px] mt-[20px] rounded-[6px] font-sans text-[16px] font-[600] text-[#696A75]"
+          >
+            Load More
+          </button>
+        )}
       </div>
       <Footer />
     </main>

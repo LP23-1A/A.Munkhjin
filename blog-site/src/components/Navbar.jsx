@@ -1,11 +1,11 @@
 import MetaBLogIcon from "@/Icons/MetablogIcon"
-export default function Navbar() {
+export default function Navbar(props) {
     return(
         <div className=" flex justify-between items-center py-[32px] px-[352px]">
         <MetaBLogIcon/>
         <div className="flex gap-[40px] ">
-            <p>Home</p>
-            <p>
+            <p className=" hover:cursor-pointer" onClick={props.home}>Home</p>
+            <p className=" hover:cursor-pointer" onClick={props.blog}>
                 Blog
             </p>
             <p>
