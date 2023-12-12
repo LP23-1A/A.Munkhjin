@@ -1,35 +1,36 @@
-import Footer from "@/components/Footer"
-import Navbar from "@/components/Navbar"
-import { Card } from "@/components/Article"
-import axios from "axios"
-import { useEffect,  useState } from "react"
-import { useRouter } from "next/router"
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { Card } from "@/components/Article";
+import axios from "axios";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 let api = axios.get("https://dev.to/api/articles");
 export default function BlogList() {
-    const router = useRouter()
-    const home = ()=>{
-        router.push('/')
-    }
-    const blog = () =>{
-        router.push('/blogList')
-      }
-    const [articleData, setArticleData] = useState([]);
-useEffect(()=>{
-    const getData = async ()=>{
-        let res = await api
-        setArticleData(res.data)
-    }
-    getData()
-},[articleData])
+  const router = useRouter();
+  const home = () => {
+    router.push("/");
+  };
+  const blog = () => {
+    router.push("/blogList");
+  };
+  const [articleData, setArticleData] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      let res = await api;
+      setArticleData(res.data);
+    };
+    getData();
+  }, [articleData]);
 
-const [articleCount, setArticleCount] = useState(12);
-const handleLoadMore = () => {
+  const [articleCount, setArticleCount] = useState(12);
+  const handleLoadMore = () => {
     setArticleCount((prev) => prev + 3);
   };
-    return (
-        <>
-     <Navbar home={home} blog={blog}/>
-     <div className="flex items-center flex-col mt-[100px]">
+  return (
+    <>
+      <Navbar home={home} blog={blog} />
+      <div className="flex items-center flex-col mt-[100px]">
         <p className="flex justify-start w-[1440px] font-bold text-[24px]">
           All Blog Post
         </p>
@@ -37,14 +38,16 @@ const handleLoadMore = () => {
           {articleData &&
             articleData.slice(0, articleCount).map((item) => {
               return (
-                <Card
-                  id={item.id}
-                  social_image={item.social_image}
-                  tag={item.tag}
-                  title={item.title}
-                  tags={item.tags}
-                  readable_publish_date={item.readable_publish_date}
-                />
+                <Link href={`/blog/${item.id}`}>
+                  <Card
+                    id={item.id}
+                    social_image={item.social_image}
+                    tag={item.tag}
+                    title={item.title}
+                    tags={item.tags}
+                    readable_publish_date={item.readable_publish_date}
+                  />
+                </Link>
               );
             })}
         </div>{" "}
@@ -57,8 +60,7 @@ const handleLoadMore = () => {
           </button>
         )}
       </div>
-      <Footer/>
-        </>
-    )
-    
-        }
+      <Footer />
+    </>
+  );
+}

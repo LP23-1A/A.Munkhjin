@@ -143,8 +143,7 @@ export default function Home() {
           {filteredArticleData &&
             filteredArticleData.slice(0, articleCount).map((item) => {
               return (
-                <Link href={`/blogDetail/${item.id}` } uid={item.id}>
-               
+                <Link href={`/blog/${item.id}`}>
                   <Card
                     id={item.id}
                     social_image={item.social_image}
@@ -153,8 +152,7 @@ export default function Home() {
                     tags={item.tags}
                     readable_publish_date={item.readable_publish_date}
                   />
-            
-              </Link>
+                </Link>
               );
             })}
         </div>{" "}
