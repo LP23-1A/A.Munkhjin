@@ -27,6 +27,9 @@ export default function Home() {
   const viewAll = () => {
     router.push("/blogList");
   };
+  const Contact = ()=>{
+    router.push("/Contact")
+  }
   useEffect(() => {
     const fetchData = async () => {
       const response = await api;
@@ -65,7 +68,7 @@ export default function Home() {
   };
   return (
     <main className="w-full ">
-      <Navbar blog={viewAll} />
+      <Navbar blog={viewAll} contact={Contact} />
 
       <div className="flex items-center flex-col mt-[100px]">
         <>

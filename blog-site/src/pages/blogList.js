@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Card } from "@/components/Article";
+import Skeleton from "react-loading-skeleton";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -14,6 +15,9 @@ export default function BlogList() {
   const blog = () => {
     router.push("/blogList");
   };
+  const Contact = ()=>{
+    router.push("/Contact")
+  }
   const [articleData, setArticleData] = useState([]);
   useEffect(() => {
     const getData = async () => {
@@ -29,23 +33,23 @@ export default function BlogList() {
   };
   return (
     <>
-      <Navbar home={home} blog={blog} />
+      <Navbar home={home} blog={blog} contact={Contact}  />
       <div className="flex items-center flex-col mt-[100px]">
         <p className="flex justify-start w-[1440px] font-bold text-[24px]">
           All Blog Post
         </p>
-        <div className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap">
+        <div  className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap ">
           {articleData &&
             articleData.slice(0, articleCount).map((item) => {
               return (
                 <Link href={`/blog/${item.id}`}>
-                  <Card
+                  <Card 
                     id={item.id}
-                    social_image={item.social_image}
-                    tag={item.tag}
-                    title={item.title}
-                    tags={item.tags}
-                    readable_publish_date={item.readable_publish_date}
+                    social_image={item.social_image }
+                    tag={item.tag  || <Skeleton/>}
+                    title={item.title  || <Skeleton/>}
+                    tags={item.tags  || <Skeleton/>}
+                    readable_publish_date={item.readable_publish_date  || <Skeleton/>}
                   />
                 </Link>
               );

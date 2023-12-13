@@ -1,7 +1,7 @@
 export function Card(props) {
   return (
     <div
-      id={props.activeIndex}
+      id={props.activeIndex} key={props.uid}
       className=" flex flex-col w-[392px] rounded-[12px] border-solid border-[#E8E8EA)] bg-[#FFF] border-[1px] gap-[16px] justify-center p-[16px]"
     >
       <img className="h-[240px] w-[360px] rounded-[6px]" src={props.social_image} />
