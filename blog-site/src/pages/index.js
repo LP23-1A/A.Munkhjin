@@ -23,13 +23,8 @@ export default function Home() {
   const [filteredArticleData, setFilteredArticleData] = useState([]);
   const [articleCount, setArticleCount] = useState(3);
   const [index, setIndex] = useState(0);
+  console.log(articleData);
   const router = useRouter();
-  const viewAll = () => {
-    router.push("/blogList");
-  };
-  const Contact = ()=>{
-    router.push("/Contact")
-  }
   useEffect(() => {
     const fetchData = async () => {
       const response = await api;
@@ -68,7 +63,6 @@ export default function Home() {
   };
   return (
     <main className="w-full ">
-      <Navbar blog={viewAll} contact={Contact} />
 
       <div className="flex items-center flex-col mt-[100px]">
         <>
@@ -98,16 +92,19 @@ export default function Home() {
         </>
       </div>
       <div className=" flex items-center flex-col">
-        <p className="flex justify-start w-[1540px] font-bold text-[24px]">
+        <p className="flex justify-start  font-bold text-[24px]">
           Trending
         </p>
-        {dataTrending.map((e) => {
+        <div className="flex gap-[20px]">
+        {articleData.slice(1,5).map((e) => {
           return (
-            <div>
-              <Trend img={e.img} desc={e.desc} tag={e.tag} />
+            <div className="flex">
+              <Trend img={e.social_image} desc={e.title} tag={e.tags} />
             </div>
           );
         })}
+        </div>
+     
       </div>
       <div className="flex items-center flex-col mt-[100px]">
         <p className="flex justify-start w-[1440px] font-bold text-[24px]">
@@ -135,12 +132,11 @@ export default function Home() {
                 );
               })}
           </div>
-          <button
-            onClick={viewAll}
+          <a href="/blogList"
             className="text-[12px] font-sans font-[700] text-[#495057]"
           >
             View All
-          </button>
+          </a>
         </div>
         <div className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap">
           {filteredArticleData &&

@@ -1,23 +1,16 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 function BlogDetail() {
   const [postData, setPostData] = useState({});
   const router = useRouter();
-  const home = () => {
-    router.push("/");
-  };
-  const viewAll = () => {
-    router.push("/blogList");
-  };
   const fetchPost = async () => {
     const response = await axios.get(
       "https://dev.to/api/articles" + "/" + router.query.id
     );
+    console.log(router.query.id);
     setPostData(response.data);
   };
   useEffect(() => {
@@ -28,8 +21,6 @@ function BlogDetail() {
 
   return (
     <main className="w-full justify-center ">
-      <Navbar home={home} blog={viewAll} />
-
       <div className="flex justify-center">
         {
           <div className="flex justify-center flex-col w-[800px] gap-[32px]">
@@ -54,8 +45,6 @@ function BlogDetail() {
           </div>
         }
       </div>
-
-      <Footer />
     </main>
   );
 }

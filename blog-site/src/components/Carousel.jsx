@@ -1,6 +1,6 @@
 import Skeleton from "react-loading-skeleton";
 export default function Carousel(props) {
-  const index = 0; // useState
+  const index = 0;
 
   //handler
   return (

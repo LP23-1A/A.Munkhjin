@@ -2,15 +2,15 @@ import MetaBLogIcon from "@/Icons/MetablogIcon"
 export default function Navbar(props) {
     return(
         <div className=" flex justify-between items-center py-[32px] px-[352px]">
-        <MetaBLogIcon onClick={props.home}/>
+       <a href="/">   <MetaBLogIcon /> </a>
         <div className="flex gap-[40px] ">
-            <p className=" hover:cursor-pointer" onClick={props.home}>Home</p>
-            <p className=" hover:cursor-pointer" onClick={props.blog}>
+            <a href="/" className=" hover:cursor-pointer" >Home</a>
+            <a href="/blogList" className=" hover:cursor-pointer" >
                 Blog
-            </p>
-            <p onClick={props.contact} className=" hover:cursor-pointer">
+            </a>
+            <a href="/Contact" className=" hover:cursor-pointer">
                 Contact
-            </p>
+            </a>
         </div>
         <div className="flex bg-[#F4F4F5] items-center px-[16px] py-[8px]">
             <input className=" bg-[#f4f4f5] w-[142px] h-[20px]" type="text"  placeholder="Search"/>

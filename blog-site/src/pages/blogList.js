@@ -5,19 +5,9 @@ import Skeleton from "react-loading-skeleton";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+
 let api = axios.get("https://dev.to/api/articles");
 export default function BlogList() {
-  const router = useRouter();
-  const home = () => {
-    router.push("/");
-  };
-  const blog = () => {
-    router.push("/blogList");
-  };
-  const Contact = ()=>{
-    router.push("/Contact")
-  }
   const [articleData, setArticleData] = useState([]);
   useEffect(() => {
     const getData = async () => {
@@ -33,7 +23,6 @@ export default function BlogList() {
   };
   return (
     <>
-      <Navbar home={home} blog={blog} contact={Contact}  />
       <div className="flex items-center flex-col mt-[100px]">
         <p className="flex justify-start w-[1440px] font-bold text-[24px]">
           All Blog Post
@@ -64,7 +53,6 @@ export default function BlogList() {
           </button>
         )}
       </div>
-      <Footer />
     </>
   );
 }

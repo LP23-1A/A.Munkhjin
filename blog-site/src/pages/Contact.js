@@ -1,18 +1,6 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import { useRouter } from "next/router";
 export default function Contact() {
-    const router = useRouter()
-    const home = () => {
-        router.push("/");
-      };
-      const viewAll = () => {
-        router.push("/blogList");
-      };
 return (
-  <div className="w-full">
-     <Navbar home={home} blog={viewAll}/>
-    
+  <div className="w-full">  
      <div className="flex flex-col items-center gap-[30px]">
         <div>
         <div className="flex flex-col gap-[10px]" > 
@@ -58,13 +46,8 @@ return (
             <button className=" w-[130px] h-fit rounded-[6px] px-[16px] py-[10px] bg-[#4b6bfb] text-[14px] text-[#fff]">
                 Send message
             </button>
-        </div>
-       
-        
+        </div>        
     </div>
-    
-    
-    <Footer/>
   </div>
 )
     
