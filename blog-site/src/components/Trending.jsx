@@ -7,7 +7,7 @@ export default function Trending(props) {
             <p className=" text-white px-[10px] py-[4px] flex justify-center  rounded-[6px] bg-[#4B6BFB] w-fit text-[14px]">
                 {props.tag}
             </p>
-            <p className="text-white mt-[16px] font-bold text-[18px] not-italic font-sans">
+            <p className="text-white mt-[16px] font-bold text-[18px] not-italic font-sans overflow-hidden h-6 hover:h-fit  transition transform hover:-translate-y-1">
                 {props.desc}
             </p>
             </div>
