@@ -6,24 +6,22 @@ import Carousel from "@/components/Carousel";
 import { useEffect, useState } from "react";
 import { uuid } from "uuidv4";
 import axios from "axios";
+import { filterByTags } from "@/utils/filterByTags";
 import { Router, useRouter } from "next/router";
 import Link from "next/link";
 
-const dataTrending = [
-  {
-    img: "https://s3-alpha-sig.figma.com/img/e8eb/3bce/c766a697a30822ccba768b03c5125ead?Expires=1702857600&Signature=mS1K5kWMKdlerCnD04RJL-32u2QR~P-BrzhJjc60wD~2aECa~ybTYlb3shy-lxMN5NrwHvXXBV5G5d9aoWO1RLwzHwAtF0728X2AY0vR0eOwB5zNxaMBkSM565DVEfM7aE0JTI3wA-wOYHs2JrtG5vy1d4qxM-adv6sPFGBeQVH7FTrfU-wOaagqWmRzlotOv1cxHZET7oPgA80Qf-g5BaxlL9l4Z74welNJLRWmUTygXksPWe7bdolzVHy5EBdWJ6r3hfazxLpk-mtePX1ea2lBTLfw1o~vw~3SZmhoJzDxCSz5OJdJkb8H1y3AMv9Q1N6QBuWNe2rCVdR6QeHDmQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    tag: "Techonlogy",
-    desc: "The Impact of Technology on the Workplace: How Technology is Changing",
-  },
-];
-let api = axios.get("https://dev.to/api/articles?username=gereltuyamz");
+let api = axios.get("https://dev.to/api/articles");
 export default function Home() {
   const [articleData, setArticleData] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [discuss, setDiscuss] = useState([]);
   const [filteredArticleData, setFilteredArticleData] = useState([]);
   const [articleCount, setArticleCount] = useState(3);
   const [index, setIndex] = useState(0);
-  console.log(articleData);
+  useEffect(() => {
+    setDiscuss(filterByTags(articleData, "discuss"));
+  }, [articleData]);
+
   const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
@@ -61,9 +59,11 @@ export default function Home() {
       prevIndex === articleData.length - 1 ? 0 : prevIndex + 1
     );
   };
+  const DateFixer = (date) => {
+    return date.split('-')[0]
+  };
   return (
     <main className="w-full ">
-
       <div className="flex items-center flex-col mt-[100px]">
         <>
           {articleData.length !== 0 && (
@@ -92,19 +92,16 @@ export default function Home() {
         </>
       </div>
       <div className=" flex items-center flex-col">
-        <p className="flex justify-start  font-bold text-[24px]">
-          Trending
-        </p>
+        <p className="flex justify-start  font-bold text-[24px]">Trending</p>
         <div className="flex gap-[20px]">
-        {articleData.slice(1,5).map((e) => {
-          return (
-            <div className="flex">
-              <Trend img={e.social_image} desc={e.title} tag={e.tags} />
-            </div>
-          );
-        })}
+          {discuss.slice(4, 8).map((e) => {
+            return (
+              <div id={e.id} className="flex">
+                <Trend img={e.social_image} desc={e.title} tag={e.tags} />
+              </div>
+            );
+          })}
         </div>
-     
       </div>
       <div className="flex items-center flex-col mt-[100px]">
         <p className="flex justify-start w-[1440px] font-bold text-[24px]">
@@ -119,7 +116,7 @@ export default function Home() {
               All
             </button>
             {categories &&
-              categories.map((item) => {
+              categories.slice(0, 4).map((item) => {
                 return (
                   <button
                     className="text-[12px] font-sans font-[700] text-[#495057]"
@@ -132,7 +129,8 @@ export default function Home() {
                 );
               })}
           </div>
-          <a href="/blogList"
+          <a
+            href="/blogList"
             className="text-[12px] font-sans font-[700] text-[#495057]"
           >
             View All
@@ -141,6 +139,7 @@ export default function Home() {
         <div className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap">
           {filteredArticleData &&
             filteredArticleData.slice(0, articleCount).map((item) => {
+              let datefixer = DateFixer(item.published_at);
               return (
                 <Link href={`/blog/${item.id}`}>
                   <Card
@@ -149,7 +148,8 @@ export default function Home() {
                     tag={item.tag}
                     title={item.title}
                     tags={item.tags}
-                    readable_publish_date={item.readable_publish_date}
+                    dates={item.readable_publish_date}
+                    year={datefixer}
                   />
                 </Link>
               );

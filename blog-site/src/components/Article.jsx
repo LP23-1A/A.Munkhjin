@@ -13,7 +13,7 @@ export function Card(props) {
           {props.title}
         </h3>
         <h5 className="mt-[20px] text-[#97989F] text-[16px] font-[400]">
-          {props.readable_publish_date}
+          {props.dates},{props.year}
         </h5>
       </div>
     </div>

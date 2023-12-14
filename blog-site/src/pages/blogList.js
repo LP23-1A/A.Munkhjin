@@ -21,6 +21,9 @@ export default function BlogList() {
   const handleLoadMore = () => {
     setArticleCount((prev) => prev + 3);
   };
+  const DateFixer = (date) => { 
+    return date.split('-')[0]
+  };
   return (
     <>
       <div className="flex items-center flex-col mt-[100px]">
@@ -30,15 +33,17 @@ export default function BlogList() {
         <div  className="flex justify-center mt-[32px] gap-[20px] w-[1216px] flex-wrap ">
           {articleData &&
             articleData.slice(0, articleCount).map((item) => {
+              let datefixer = DateFixer(item.published_at);
               return (
                 <Link href={`/blog/${item.id}`}>
                   <Card 
                     id={item.id}
                     social_image={item.social_image }
-                    tag={item.tag  || <Skeleton/>}
-                    title={item.title  || <Skeleton/>}
-                    tags={item.tags  || <Skeleton/>}
-                    readable_publish_date={item.readable_publish_date  || <Skeleton/>}
+                    tag={item.tag  || <Skeleton count={10}/>}
+                    title={item.title  || <Skeleton count={10}/>}
+                    tags={item.tags  || <Skeleton count={10}/>}
+                    dates={item.readable_publish_date  || <Skeleton count={10} />}
+                    year={datefixer}
                   />
                 </Link>
               );
